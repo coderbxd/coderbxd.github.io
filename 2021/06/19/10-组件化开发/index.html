@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="VUE," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="coderbxd的破壳" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="什么是组件化 将一个复杂的问题, 拆解为很多个可以处理的小问题, 再将其放到整体当中,大问题就可以迎刃而解  其实就是 动态规划问题  组件化也是类似的思想  如果将一个页面中所有的处理逻辑全部放在一起,处理起来就会变得非常复杂, 而且不利于后续的管理以及扩展, 不利于维护 如果将一个页面拆分成一个个效地功能块, 每个功能块完成属于自己的部分的独立功能, 那么之后整个页面的管理和维护就变得非常容易">
+<meta property="og:type" content="article">
+<meta property="og:title" content="09-组件化开发">
+<meta property="og:url" content="http://example.com/2021/06/19/10-%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="coderbxd的破壳">
+<meta property="og:description" content="什么是组件化 将一个复杂的问题, 拆解为很多个可以处理的小问题, 再将其放到整体当中,大问题就可以迎刃而解  其实就是 动态规划问题  组件化也是类似的思想  如果将一个页面中所有的处理逻辑全部放在一起,处理起来就会变得非常复杂, 而且不利于后续的管理以及扩展, 不利于维护 如果将一个页面拆分成一个个效地功能块, 每个功能块完成属于自己的部分的独立功能, 那么之后整个页面的管理和维护就变得非常容易">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-06-19T07:04:16.233Z">
+<meta property="article:modified_time" content="2021-06-19T08:03:57.898Z">
+<meta property="article:author" content="bxd">
+<meta property="article:tag" content="VUE">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/06/19/10-组件化开发/"/>
+
+
+
+
+
+  <title>09-组件化开发 | coderbxd的破壳</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/coderbxd" class="github-corner" aria-label="View source on GitHub"><svg width="150" height="150" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">coderbxd的破壳</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">重庆移通学院 2022 软件工程</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/10-%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="coderbxd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avator.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coderbxd的破壳">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">09-组件化开发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-19T15:04:16+08:00">
+                2021-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是组件化"><a href="#什么是组件化" class="headerlink" title="什么是组件化"></a>什么是组件化</h3><ul>
+<li><p>将一个复杂的问题, 拆解为很多个可以处理的小问题, 再将其放到整体当中,大问题就可以迎刃而解  其实就是 动态规划问题</p>
+</li>
+<li><p>组件化也是类似的思想</p>
+<ul>
+<li>如果将一个页面中所有的处理逻辑全部放在一起,处理起来就会变得非常复杂, 而且不利于后续的管理以及扩展, 不利于维护</li>
+<li>如果将一个页面拆分成一个个效地功能块, 每个功能块完成属于自己的部分的独立功能, 那么之后整个页面的管理和维护就变得非常容易了</li>
+</ul>
+</li>
+<li><p>组件化是Vue.js中的重要思想, 它提供了一种抽象, 让我们开发出一个个独立的可以复用的小组件来组成我们的页面</p>
+</li>
+<li><p>任何的应用都可以被抽象成一个组件树</p>
+</li>
+<li><p>组件化思想的应用</p>
+<ul>
+<li>有了组件化的思想, 在以后的开发中就要充分地利用组件化</li>
+<li>尽可能地将页面拆分成一个个小的, 可以复用的组件</li>
+<li>这样可以方便代码的管理和维护,代码的扩展性也会大大增强</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+<h3 id="注册组件的基本步骤"><a href="#注册组件的基本步骤" class="headerlink" title="注册组件的基本步骤"></a>注册组件的基本步骤</h3><ul>
+<li><p>组件的使用分成三个步骤</p>
+<ul>
+<li>创建组件构造器<ul>
+<li>调用Vue.extend()方法创建组件构造器</li>
+</ul>
+</li>
+<li>注册组件<ul>
+<li>调用Vue.component()方法注册组件</li>
+</ul>
+</li>
+<li>使用组件<ul>
+<li>在Vue实例的作用范围内使用组件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>注意: 前两个步骤代码的编写要写在 创建 new Vue() 之前</p>
+</li>
+</ul>
+<h3 id="注册组件步骤解析"><a href="#注册组件步骤解析" class="headerlink" title="注册组件步骤解析"></a>注册组件步骤解析</h3><ul>
+<li><ol>
+<li>Vue.extend()</li>
+</ol>
+<ul>
+<li>调用Vue.extend() 创建的是一个组件构造器</li>
+<li>在创建组件构造器的时候, 传入template 代表自定义组件的模板</li>
+<li>改模板就是在使用到组件的地方, 要显示的html代码</li>
+<li>事实上,这种写法在Vue2.x的文档中几乎看不到了,都是使用语法糖</li>
+</ul>
+</li>
+<li><ol start="2">
+<li>Vue.component()</li>
+</ol>
+<ul>
+<li>调用Vue.component() 是将创建的组件构造器注册为一个组件, 并给它一个标签名称</li>
+<li>Vue.component() 需要传递两个参数: 1. 注册组件的标签名 2. 组件构造器</li>
+</ul>
+</li>
+<li><ol start="3">
+<li>组件必须挂载在某个Vue实例中, 否则不会生效</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 3. 使用组件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">my-cpn</span>&gt;</span><span class="tag">&lt;/<span class="name">my-cpn</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 1. 创建组件构造器</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> cpn = Vue.extend(&#123;</span></span><br><span class="line">      template: `</span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>我是标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是内容, 你好你好<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是内容, 你好你好<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是内容, 你好你好<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">      `</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="comment">// 2. 注册组件</span></span></span><br><span class="line"><span class="javascript">    Vue.component(<span class="string">&#x27;my-cpn&#x27;</span>, cpn)</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="comment">// 以上两步要写在 new Vue实例之前</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="全局组件和局部组件-开发中常用的是局部组件"><a href="#全局组件和局部组件-开发中常用的是局部组件" class="headerlink" title="全局组件和局部组件 (开发中常用的是局部组件)"></a>全局组件和局部组件 (开发中常用的是局部组件)</h3><ul>
+<li>全局组件就是在全局注册的组件, 全局组件可以在多个Vue实例中使用</li>
+<li>局部组件就是在Vue实例对象中注册的组件, 局部组件只能在当前的Vue实例下面使用, 在其他的Vue实例下使用会报错<ul>
+<li>局部组件是在Vue实例下的一个叫 components 的 option下注册的, components值是一个对象那个, 里面写入 组件名(就是在html中使用的标签名) : 组件构造器 即可注册组件</li>
+</ul>
+</li>
+<li>注意, 组件构造器和全局注册组件的代码要写在 创建Vue实例的代码之前</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mycpn1</span>&gt;</span><span class="tag">&lt;/<span class="name">mycpn1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mycpn2</span>&gt;</span><span class="tag">&lt;/<span class="name">mycpn2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mycpn1</span>&gt;</span><span class="tag">&lt;/<span class="name">mycpn1</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 局部的组件 在这里无效 而且会报错--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;mycpn2&gt;&lt;/mycpn2&gt; --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 1. 创建组件构造器</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> cpn1 = Vue.extend(&#123;</span></span><br><span class="line">      template: `</span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是标题111<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是内容111, 你好你好<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span>`</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> cpn2 = Vue.extend(&#123;</span></span><br><span class="line">      template: `</span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是标题222<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是内容222, 你好你好<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span>`</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="comment">// 2. 注册组件 (全局组件)</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 全局组件可以在多个Vue实例下使用</span></span></span><br><span class="line"><span class="javascript">    Vue.component(<span class="string">&#x27;mycpn1&#x27;</span>, cpn1)</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app1 = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app1&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 在实例化的Vue中注册组件就是 局部组件, 局部组件只能在当前的Vue实例中使用, 不能再其他的Vue实例中使用</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// 在 components option中定义局部组件</span></span></span><br><span class="line">      components: &#123;</span><br><span class="line"><span class="javascript">        mycpn2: cpn2 <span class="comment">// 组件名(就是在html中使用的标签名) : 组件构造器</span></span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app2 = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app2&quot;</span></span></span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Vue组件的父组件和子组件"><a href="#Vue组件的父组件和子组件" class="headerlink" title="Vue组件的父组件和子组件"></a>Vue组件的父组件和子组件</h3><ul>
+<li>子组件的注册组件代码可以写在父组件的组件构造器的名为components的option中, 子组件的注册完成后, 子组件的标签名就可以写入父组件的template中</li>
+<li>简单来说, 就是组件在哪里注册就只能在哪里使用, 浏览器解析组件标签的时候, 会先从当前的组件构造器中的components中查找是否有注册该标签名, 如果找到了就开始渲染, 如果没有找到就在全局的Vue.component中查找, 如果找到就渲染, 如果都没有找到的话就会报错</li>
+<li>注意, 子组件的组件构造器要写在 父组件的组件构造器之前, 否则按照浏览器解析代码的顺序, 会找不到子组件, 就会报错<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fathercpn</span>&gt;</span><span class="tag">&lt;/<span class="name">fathercpn</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 组件1</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> son = Vue.extend()</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="comment">// 组件2</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 注意, 子组件的组件构造器要写在父组件的组件构造器之前</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> father = Vue.extend()</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="comment">// 这个app可以看作是root组件(根组件)</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      components: &#123;</span><br><span class="line">        fathercpn: &#123;</span><br><span class="line"><span class="handlebars"><span class="xml">      template: `<span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是父标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是父内容,哈哈哈哈<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line">      在这里使用子组件</span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">soncpn</span>&gt;</span><span class="tag">&lt;/<span class="name">soncpn</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span>`,</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// 子组件可以在父组件的内部注册</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// 注册后就可以在父组件的template中使用</span></span></span><br><span class="line">      components: &#123;</span><br><span class="line">        soncpn: &#123;</span><br><span class="line"><span class="handlebars"><span class="xml">      template: `<span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是子标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是子内容,呵呵呵呵<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span>`</span></span></span><br><span class="line">    &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="注册组件的语法糖"><a href="#注册组件的语法糖" class="headerlink" title="注册组件的语法糖"></a>注册组件的语法糖</h3><ul>
+<li>传统注册组件的方式, 有些繁琐</li>
+<li>Vue为了见过这个过程, 提供了注册的语法糖</li>
+<li>主要是省去了调用Vue.extend()的这个步骤, 可以将一个对象当作参数传入component中<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cpn1</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cpn2</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 注册组件的语法糖</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 1. 全局注册组件的语法糖</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 将组件构造器中调用Vue.extend方法的步骤省略, 而是直接将一个对象代替传入Vue.component中</span></span></span><br><span class="line"><span class="javascript">    Vue.component(<span class="string">&#x27;cpn1&#x27;</span>, &#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">      template: `<span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是标题111<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是内容111, 你好你好<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span>`</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      components: &#123;</span><br><span class="line"><span class="javascript">        <span class="comment">// 2. 局部注册组件的语法糖</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">// 跟全局注册组件的语法糖差不多, 也是直接将一个对象传入</span></span></span><br><span class="line">        cpn2: &#123;</span><br><span class="line"><span class="handlebars"><span class="xml">          template: `<span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是标题222<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是内容222, 你好你好<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span>`</span></span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="组件模板的分离写法"><a href="#组件模板的分离写法" class="headerlink" title="组件模板的分离写法"></a>组件模板的分离写法</h3><ul>
+<li>template模板如果写在js代码中不优雅不好看</li>
+<li>将其中的HTML代码分离出来,然后挂载到对应的组件上</li>
+<li>Vue提供了两种方案来定义HTML模块内容<ul>
+<li>script标签<ul>
+<li>注意script标签需要定义type类型为 text/x-template</li>
+<li>并且定义id属性来绑定组件的标签名</li>
+</ul>
+</li>
+<li>template标签<ul>
+<li>定义id属性来绑定组件的标签名<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cpn1</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cpn2</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 组件模板的分离写法 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 1. script标签写法 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/x-template&quot;</span> <span class="attr">id</span>=<span class="string">&quot;cpn1&quot;</span>&gt;</span></span><br><span class="line"><span class="handlebars"><span class="xml">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是标题111<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是内容,哈哈哈哈哈<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 2. template标签写法 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;cpn2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是标题222<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是内容,呵呵呵呵呵<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 将定义的模板的id绑定到标签名中</span></span></span><br><span class="line"><span class="javascript">    Vue.component(<span class="string">&#x27;cpn1&#x27;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      template: <span class="string">&quot;#cpn1&quot;</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"><span class="javascript">    Vue.component(<span class="string">&#x27;cpn2&#x27;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      template: <span class="string">&quot;#cpn2&quot;</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span></span></span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="组件中的数据存放问题"><a href="#组件中的数据存放问题" class="headerlink" title="组件中的数据存放问题"></a>组件中的数据存放问题</h3><ul>
+<li>组件可以访问Vue中的数据吗?<ul>
+<li>不可以</li>
+<li>组件是一个单独功能模块的封装</li>
+<li>这个模块有属于自己的HTML模板, 也会有属于自己的数据data</li>
+</ul>
+</li>
+<li>组件中的数据是保存在自身的一个data属性中的(组件也可以有自己的methods等等option,以后会用到)<ul>
+<li>这个data属性必须是一个函数</li>
+<li>函数返回一个对象, 对象内部保存数据<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cpn1</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;cpn1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 组件保存的数据也是用mustache语法引用 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是内容,&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    Vue.component(<span class="string">&#x27;cpn1&#x27;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      template: <span class="string">&quot;#cpn1&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 组件中的数据要存放在组件的注册的data中, 而且这个data必须是一个函数, 函数返回一个对象, 对象内写入数据</span></span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 返回一个对象</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="comment">// 对象内写入数据</span></span></span><br><span class="line"><span class="javascript">          message: <span class="string">&quot;你好你好&quot;</span></span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span></span></span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="组件中的data为什么一定要是一个对象"><a href="#组件中的data为什么一定要是一个对象" class="headerlink" title="组件中的data为什么一定要是一个对象"></a>组件中的data为什么一定要是一个对象</h3><ul>
+<li>就是为了防止多次引用组件的时候, 组件和组件之间共用一个data, 造成变量泄露</li>
+<li>Vue已经考虑了这个问题, 所以这里必须写函数, 利用函数的作用域, 成为一个闭包, 防止变量泄露</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">counter</span>&gt;</span><span class="tag">&lt;/<span class="name">counter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">counter</span>&gt;</span><span class="tag">&lt;/<span class="name">counter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">counter</span>&gt;</span><span class="tag">&lt;/<span class="name">counter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;counter&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>当前计数: &#123;&#123;num&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;decrement&quot;</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;increment&quot;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 1. 注册组件</span></span></span><br><span class="line"><span class="javascript">    Vue.component(<span class="string">&#x27;counter&#x27;</span>, &#123;</span></span><br><span class="line"><span class="javascript">      template: <span class="string">&quot;#counter&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 这里为什么要是一个函数?</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// 就是为了防止多次引用组件的时候, 组件和组件之间共用一个data, 造成变量泄露</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// Vue已经考虑了这个问题, 所以这里必须写函数, 利用函数的作用域, 成为一个闭包, 防止变量泄露</span></span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> &#123;</span></span><br><span class="line">          num: 0</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">increment</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.num++</span></span><br><span class="line">        &#125;,</span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">decrement</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.num--</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span></span></span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="组件通讯-父组件向子组件传递数据"><a href="#组件通讯-父组件向子组件传递数据" class="headerlink" title="组件通讯-父组件向子组件传递数据"></a>组件通讯-父组件向子组件传递数据</h3><ul>
+<li>在Vue中子组件是不可以直接引用父组件或者Vue实例中的数据的</li>
+<li>但是在开发中, 往往一些数据需要从上层传递到下层<ul>
+<li>比如在一个页面中, 从服务器请求到很多数据, 包括大组件的数据和小组件的数据, 他们都存储在大组件的data中</li>
+<li>其中一部分数据, 并非是整个页面的大组件来展示的, 而是通过子组件来展示</li>
+<li>这时, 并不会让子组件再次发送一个网络请求, 这样会大大加大服务器的压力的, 此时会让大组件(父组件)将苏剧传递给小组件(子组件)</li>
+</ul>
+</li>
+<li>父组件向子组件传递数据的方法<ul>
+<li>通过props向子组件传递数据<ul>
+<li>props的写法也分有数组写法和对象写法 (我们一般用对象写法)</li>
+<li>对象的写法可以设置 传入的数据类型, 是否必须传入, 默认值等等</li>
+<li>对象的写法中, 如果type的值为0的时候, 则可以传入任何类型的值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 传递数据要子组件的标签中用 v-bind 链接数据 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cpn</span> <span class="attr">:sonmessage</span>=<span class="string">&quot;message&quot;</span> <span class="attr">:sonmovies</span>=<span class="string">&quot;movies&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;cpn&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 在通过子组件标签链接数据后, 就可以在子组件的html模板中用mustache语法使用数据 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123;sonmessage&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;item in sonmovies&quot;</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 这里是子组件</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> cpn =  &#123;</span></span><br><span class="line"><span class="javascript">      template: <span class="string">&quot;#cpn&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 子组件向父组件拿数据, 用props</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// 这里用数组形式, 数组里面传入新的数据名</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// props: [&quot;sonmessage&quot;, &quot;sonmovies&quot;]</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">      <span class="comment">// 这里使用对象形式, 对象形式可以设置传入的数据的类型, 默认值, 是否必须传入等等</span></span></span><br><span class="line">      props: &#123;</span><br><span class="line"><span class="javascript">        <span class="comment">// 简单地设置数据类型</span></span></span><br><span class="line">        /* sonmessage : String,</span><br><span class="line"><span class="javascript">        sonmovies: <span class="built_in">Array</span> */</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="comment">// 传入一个对象可以有更多的操作</span></span></span><br><span class="line">        sonmessage: &#123;</span><br><span class="line"><span class="javascript">          <span class="comment">// 设置数据的类型</span></span></span><br><span class="line"><span class="javascript">          type: <span class="built_in">String</span>,</span></span><br><span class="line"><span class="javascript">          <span class="comment">// 设置是否必须传入</span></span></span><br><span class="line"><span class="javascript">          required: <span class="literal">true</span>, <span class="comment">// true表示必须传入, false表示不是必须传入</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// 设置默认值</span></span></span><br><span class="line"><span class="javascript">          <span class="keyword">default</span>: <span class="string">&quot;你好我是默认值&quot;</span></span></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        sonmovies: &#123;</span><br><span class="line"><span class="javascript">          type: <span class="built_in">Array</span>,</span></span><br><span class="line"><span class="javascript">          <span class="comment">// 注意如果传入的数据类型是数组或者对象的话, 设置默认值default必须是一个函数, 函数返回一个默认的数据</span></span></span><br><span class="line"><span class="javascript">          <span class="keyword">default</span> () &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> [<span class="string">&quot;我是默认的数据&quot;</span>, <span class="string">&quot;我也是默认的数据&quot;</span>]</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line"><span class="javascript">        <span class="comment">// 这里是父组件的数据</span></span></span><br><span class="line"><span class="javascript">        message: <span class="string">&quot;你好你好&quot;</span>,</span></span><br><span class="line"><span class="javascript">        movies: [<span class="string">&quot;海王&quot;</span>, <span class="string">&quot;海贼王&quot;</span>, <span class="string">&quot;海尔兄弟&quot;</span>]</span></span><br><span class="line">      &#125;,</span><br><span class="line">      components : &#123;</span><br><span class="line">        cpn</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="父组件向子组件传递数据时props中的驼峰标识"><a href="#父组件向子组件传递数据时props中的驼峰标识" class="headerlink" title="父组件向子组件传递数据时props中的驼峰标识"></a>父组件向子组件传递数据时props中的驼峰标识</h3><ul>
+<li>因为HTML代码时不区分大小写的, 所以不能使用驼峰命名法, 而JS代码时严格区分大小写的, 所以就会导致这个问题</li>
+<li>记住在HTML代码中用短线命名, 在JS代码中使用驼峰命名 就OK啦~<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注意这里不能使用驼峰命名法了, 要将props中的驼峰命名的转换为短线命名 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cpn</span> <span class="attr">:son-message</span>=<span class="string">&quot;message&quot;</span> <span class="attr">:son-person</span>=<span class="string">&quot;person&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;cpn&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 这里使用的数据, 要与props中的数据名一致 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123;sonMessage&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;sonPerson&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> cpn = &#123;</span></span><br><span class="line"><span class="javascript">      template: <span class="string">&quot;#cpn&quot;</span>,</span></span><br><span class="line">      props: &#123;</span><br><span class="line">        sonMessage: &#123;</span><br><span class="line"><span class="javascript">          type: <span class="built_in">String</span>,</span></span><br><span class="line"><span class="javascript">          <span class="keyword">default</span>: <span class="string">&quot;你好你好&quot;</span></span></span><br><span class="line">        &#125;,</span><br><span class="line">        sonPerson: &#123;</span><br><span class="line"><span class="javascript">          type: <span class="built_in">Object</span>,</span></span><br><span class="line"><span class="javascript">          <span class="keyword">default</span> () &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> &#123;&#125;</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line"><span class="javascript">        message: <span class="string">&quot;我是传入的数据&quot;</span>,</span></span><br><span class="line">        person: &#123;</span><br><span class="line"><span class="javascript">          name: <span class="string">&quot;xiaoLam&quot;</span>,</span></span><br><span class="line">          age: 22</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      components: &#123;</span><br><span class="line">        cpn</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="子组件向父组件传递数据"><a href="#子组件向父组件传递数据" class="headerlink" title="子组件向父组件传递数据"></a>子组件向父组件传递数据</h3><ul>
+<li>需要使用自定义事件传递</li>
+<li>什么时候需要自定义事件呢?<ul>
+<li>当子组件需要向父组件传递数据的时候, 就要用到自定义事件了</li>
+<li>v-on不仅仅可以监听DOM事件, 也可以用域监听组件间的自定义事件</li>
+</ul>
+</li>
+<li>自定义事件的流程<ul>
+<li>在子组件中, 通过$emit()来发射数据<ul>
+<li>$emit() 中有两个参数, 第一个参数是自定义事件的名字, 第二个参数是需要发送的数据</li>
+</ul>
+</li>
+<li>在父组件中, 通过v-on来监听自定义事件, 接收数据</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 需求: 计数器 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 操作在子组件中完成 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 展示交给父组件完成 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 父组件模版 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;num&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 在这里用v-on监听接收子组件发射数据的自定义事件 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">btn</span> @<span class="attr">num-de</span>=<span class="string">&quot;decreNum&quot;</span> @<span class="attr">num-in</span>=<span class="string">&quot;increNum&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">btn</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 子组件模板 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 设置点击后触发发射数据事件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;decrement&quot;</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;increment&quot;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="comment">// 子组件模块</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> btn = &#123;</span></span><br><span class="line"><span class="javascript">    template: <span class="string">&quot;#btn&quot;</span>,</span></span><br><span class="line">    methods: &#123;</span><br><span class="line"><span class="javascript">      <span class="comment">// 用$emit()发射数据</span></span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">decrement</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">this</span>.$emit(<span class="string">&quot;num-de&quot;</span>)</span></span><br><span class="line">      &#125;,</span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">increment</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">this</span>.$emit(<span class="string">&quot;num-in&quot;</span>)</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">  <span class="comment">// 父组件模块</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">    data: &#123;</span><br><span class="line">      num: 0</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">      btn</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line"><span class="javascript">      <span class="comment">// 处理接收来的数据</span></span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">increNum</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">this</span>.num++</span></span><br><span class="line">      &#125;,</span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">decreNum</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">this</span>.num--</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="子组件接收来自父组件的数据-通过子组件修改父组件的数据案例"><a href="#子组件接收来自父组件的数据-通过子组件修改父组件的数据案例" class="headerlink" title="子组件接收来自父组件的数据, 通过子组件修改父组件的数据案例"></a>子组件接收来自父组件的数据, 通过子组件修改父组件的数据案例</h3><ul>
+<li>注意!!! 子组件不要直接修改props中来自父组件的数据, 会报错的<ul>
+<li>正确做法是, 子组件修改子组件中data的数据, 然后将data中的数据通过自定义事件发送给父组件, 父组件处理接收的数据, 修改父组件自身的数据</li>
+<li>以下的代码请注意看注释</li>
+<li>以下代码实现的过程为, 从父组件通过props向子组件发送数据, 子组件接收数据, 子组件设置自己的data数据, 子组件修改自己的data数据, 子组件通过自定义事件向父组件发送自己的data数据, 父组件接收数据, 父组件修改自己的data数据, 同步修改了props向子组件发送的数据<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 根组件模板 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">son</span> <span class="attr">:sonnum1</span>=<span class="string">&quot;num1&quot;</span> <span class="attr">:sonnum2</span>=<span class="string">&quot;num2&quot;</span> @<span class="attr">parchangenum1</span>=<span class="string">&quot;parentnum1&quot;</span> @<span class="attr">parchangenum2</span>=<span class="string">&quot;parentnum2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- 子组件模板 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;son&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 注意嗷!!! 子组件里不要直接修改props中来自父组件的数据 --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;input type=&quot;number&quot; v-model=&quot;num1&quot;&gt; --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">:value</span>=<span class="string">&quot;num1&quot;</span> @<span class="attr">input</span>=<span class="string">&quot;changenum1&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- props 是接收的来自父组件的数据 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>props : &#123;&#123;sonnum1&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- data 是子组件自身的数据 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>data : &#123;&#123;num1&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;input type=&quot;number&quot; v-model=&quot;num2&quot;&gt; --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">:value</span>=<span class="string">&quot;num2&quot;</span> @<span class="attr">input</span>=<span class="string">&quot;changenum2&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>props : &#123;&#123;sonnum2&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>data : &#123;&#123;num2&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> son = &#123;</span></span><br><span class="line"><span class="javascript">      template: <span class="string">&quot;#son&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 接收来自根组件的数据</span></span></span><br><span class="line">      props: &#123;</span><br><span class="line">        sonnum1: &#123;</span><br><span class="line"><span class="javascript">          <span class="comment">// 在做这个案例的时候, 发现了一个很有趣的现象, 如果将这里的type的值设置为 0 , 那么这个sonnum1 就可以接收任何类型的数据</span></span></span><br><span class="line"><span class="javascript">          type: <span class="built_in">Number</span></span></span><br><span class="line">        &#125;,</span><br><span class="line">        sonnum2: &#123;</span><br><span class="line"><span class="javascript">          type: <span class="built_in">Number</span></span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line"><span class="javascript">      <span class="comment">// 子组件的data必须是一个函数, 防止变量泄露</span></span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">          num1: <span class="built_in">this</span>.sonnum1,</span></span><br><span class="line"><span class="javascript">          num2: <span class="built_in">this</span>.sonnum2</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">changenum1</span>(<span class="params">event</span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="comment">// 处理num1, 然后向根组件发送</span></span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.num1 = event.target.value;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.$emit(<span class="string">&quot;parchangenum1&quot;</span>, <span class="built_in">this</span>.num1);</span></span><br><span class="line"><span class="javascript">          <span class="comment">// 处理num2, 然后向根组件发送</span></span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.num2 = <span class="built_in">this</span>.num1 * <span class="number">100</span>;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.$emit(<span class="string">&quot;parchangenum2&quot;</span>, <span class="built_in">this</span>.num2);</span></span><br><span class="line">        &#125;,</span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">changenum2</span>(<span class="params">event</span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.num2 = event.target.value;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.$emit(<span class="string">&quot;parchangenum2&quot;</span>, <span class="built_in">this</span>.num2)</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.num1 = <span class="built_in">this</span>.num2 / <span class="number">100</span>;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.$emit(<span class="string">&quot;parchangenum1&quot;</span>, <span class="built_in">this</span>.num1)</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line">        num1: 1,</span><br><span class="line">        num2: 2</span><br><span class="line">      &#125;,</span><br><span class="line">      components: &#123;</span><br><span class="line">        son</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line"><span class="javascript">        <span class="comment">// 父组件处理从子组件接收来的数据</span></span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">parentnum1</span>(<span class="params">num</span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.num1 = <span class="built_in">parseFloat</span>(num)</span></span><br><span class="line">        &#125;,</span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">parentnum2</span>(<span class="params">num</span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.num2 = <span class="built_in">parseFloat</span>(num)</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="组件访问-父组件访问子组件-通过-children-和-refs"><a href="#组件访问-父组件访问子组件-通过-children-和-refs" class="headerlink" title="组件访问-父组件访问子组件, 通过$children 和 $refs"></a>组件访问-父组件访问子组件, 通过$children 和 $refs</h3><ul>
+<li>$children 是一个数组, 里面包含的的是父组件中包含的所有子组件<ul>
+<li>想要通过children访问某一个特定的子组件只能通过数组的下标来访问(这样的方法很不灵活), 所以children访问子组件的方法很少用</li>
+</ul>
+</li>
+<li>$refs 是一个对象, 对象里面包含的是在父组件中 有ref属性注册的子组件, 没有ref属性的子组件不会被包含在内; 如果没有子组件设置ref属性, $refs就是一个空对象<ul>
+<li>想要通过refs访问某一个特定的子组件, 需要在子组件的ref属性设置值, 通过这个设置值来访问这个子组件 </li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">son</span> <span class="attr">ref</span>=<span class="string">&quot;son1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">son</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">son</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 通过这个按钮来触发事件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;btnClick&quot;</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;son&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是子组件<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> son = &#123;</span></span><br><span class="line"><span class="javascript">      template: <span class="string">&quot;#son&quot;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">          name: <span class="string">&quot;子组件数据&quot;</span></span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">showMessage</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">console</span>.log(<span class="string">&quot;子组件方法&quot;</span>);</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      components: &#123;</span><br><span class="line">        son</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">btnClick</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="comment">// 1. 通过children获取所有的子组件</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// 获取的是所有的子组件组成的一个数组</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// 想要获取某个特定的子组件, 只能使用数组的下标获取(这样很不灵活, 所以使用children获取子组件的方法很少用)</span></span></span><br><span class="line">          /* console.log(this.$children);</span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.$children[<span class="number">0</span>].showMessage(); <span class="comment">// 通过$children 使用某个下标的子组件的方法</span></span></span><br><span class="line"><span class="javascript">          <span class="built_in">console</span>.log(<span class="built_in">this</span>.$children[<span class="number">0</span>].name); <span class="comment">// 通过$children 获取某个下标的子组件的数据 */</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">          <span class="comment">// 2. 通过$refs 获取某个特定的子组件</span></span></span><br><span class="line"><span class="javascript">          <span class="built_in">console</span>.log(<span class="built_in">this</span>.$refs); <span class="comment">// $refs 获得的是一个对象, 里面包含通过标签属性ref注册的子组件 可以通过属性ref的值来获取特定的一个子组件</span></span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.$refs.son1.showMessage(); <span class="comment">//通过refs调用ref值为son1的子组件的方法</span></span></span><br><span class="line"><span class="javascript">          <span class="built_in">console</span>.log(<span class="built_in">this</span>.$refs.son1.name); <span class="comment">// 通过refs获取ref值为son1的子组件中的数据</span></span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="组件访问-子组件访问父组件-通过-parent-和-root"><a href="#组件访问-子组件访问父组件-通过-parent-和-root" class="headerlink" title="组件访问-子组件访问父组件, 通过$parent 和 $root"></a>组件访问-子组件访问父组件, 通过$parent 和 $root</h3><ul>
+<li>$parent 可以访问当前子组件上一级的父组件</li>
+<li>$root 可以访问当前子组件的最上级根组件</li>
+<li>这两个方法不是很常用, 因为Vue最大的优点是能够组件化分离, 如果组件用了$parent 或者 ​$root 方法的话就大大地减低了Vue的组件性<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">son</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;son&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是son组件<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;sonBtnClick&quot;</span>&gt;</span>我是son按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">sonchild</span>&gt;</span><span class="tag">&lt;/<span class="name">sonchild</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;sonchild&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是sonchild组件<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;sonChildBtnClick&quot;</span>&gt;</span>我是sonchild按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line"><span class="javascript">        message: <span class="string">&quot;我是根组件的数据&quot;</span></span></span><br><span class="line">      &#125;,</span><br><span class="line">      components: &#123;</span><br><span class="line">        son: &#123;</span><br><span class="line"><span class="javascript">          template: <span class="string">&quot;#son&quot;</span>,</span></span><br><span class="line"><span class="javascript">          <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">              message: <span class="string">&quot;我是son组件的数据&quot;</span></span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          methods: &#123;</span><br><span class="line"><span class="javascript">            <span class="function"><span class="title">sonBtnClick</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">              <span class="comment">// 通过parent访问父组件</span></span></span><br><span class="line"><span class="javascript">              <span class="built_in">console</span>.log(<span class="built_in">this</span>.$parent);</span></span><br><span class="line"><span class="javascript">              <span class="comment">// 通过parent访问父组件的数据</span></span></span><br><span class="line"><span class="javascript">              <span class="built_in">console</span>.log(<span class="built_in">this</span>.$parent.message);</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          components: &#123;</span><br><span class="line">            sonchild: &#123;</span><br><span class="line"><span class="javascript">              template: <span class="string">&quot;#sonchild&quot;</span>,</span></span><br><span class="line">              methods: &#123;</span><br><span class="line"><span class="javascript">                <span class="function"><span class="title">sonChildBtnClick</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">                  <span class="comment">// 通过 $root 访问根组件</span></span></span><br><span class="line"><span class="javascript">                  <span class="built_in">console</span>.log(<span class="built_in">this</span>.$root);</span></span><br><span class="line"><span class="javascript">                  <span class="built_in">console</span>.log(<span class="built_in">this</span>.$root.message);</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">                  <span class="comment">// 通过$parent 访问父组件</span></span></span><br><span class="line"><span class="javascript">                  <span class="built_in">console</span>.log(<span class="built_in">this</span>.$parent);</span></span><br><span class="line"><span class="javascript">                  <span class="built_in">console</span>.log(<span class="built_in">this</span>.$parent.message);</span></span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <div>
+      
+        <div>
+  
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+  
+</div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="coderbxd 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="coderbxd 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/VUE/" rel="tag"><i class="fa fa-tag"></i> VUE</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/06/19/09-v-model%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" rel="next" title="08-v-model的使用">
+                <i class="fa fa-chevron-left"></i> 08-v-model的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/06/19/11-%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91%E9%AB%98%E7%BA%A7/" rel="prev" title="10-组件化开发高级-slot插槽">
+                10-组件化开发高级-slot插槽 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avator.jpg"
+                alt="coderbxd" />
+            
+              <p class="site-author-name" itemprop="name">coderbxd</p>
+              <p class="site-description motion-element" itemprop="description">技术改变世界，一入前端深似海</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/coderbxd" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/bxd520" target="_blank" title="Gitee">
+                      
+                        <i class="fa fa-fw fa-git-square"></i>Gitee</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1134052715@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qq_45224140?spm=1000.2115.3001.5343" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">什么是组件化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">注册组件的基本步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E7%BB%84%E4%BB%B6%E6%AD%A5%E9%AA%A4%E8%A7%A3%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">注册组件步骤解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E7%BB%84%E4%BB%B6%E5%92%8C%E5%B1%80%E9%83%A8%E7%BB%84%E4%BB%B6-%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%98%AF%E5%B1%80%E9%83%A8%E7%BB%84%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">全局组件和局部组件 (开发中常用的是局部组件)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue%E7%BB%84%E4%BB%B6%E7%9A%84%E7%88%B6%E7%BB%84%E4%BB%B6%E5%92%8C%E5%AD%90%E7%BB%84%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">Vue组件的父组件和子组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E7%BB%84%E4%BB%B6%E7%9A%84%E8%AF%AD%E6%B3%95%E7%B3%96"><span class="nav-number">6.</span> <span class="nav-text">注册组件的语法糖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%88%86%E7%A6%BB%E5%86%99%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">组件模板的分离写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AD%98%E6%94%BE%E9%97%AE%E9%A2%98"><span class="nav-number">8.</span> <span class="nav-text">组件中的数据存放问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E5%AE%9A%E8%A6%81%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="nav-number">9.</span> <span class="nav-text">组件中的data为什么一定要是一个对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E9%80%9A%E8%AE%AF-%E7%88%B6%E7%BB%84%E4%BB%B6%E5%90%91%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE"><span class="nav-number">10.</span> <span class="nav-text">组件通讯-父组件向子组件传递数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E7%BB%84%E4%BB%B6%E5%90%91%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE%E6%97%B6props%E4%B8%AD%E7%9A%84%E9%A9%BC%E5%B3%B0%E6%A0%87%E8%AF%86"><span class="nav-number">11.</span> <span class="nav-text">父组件向子组件传递数据时props中的驼峰标识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%BB%84%E4%BB%B6%E5%90%91%E7%88%B6%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE"><span class="nav-number">12.</span> <span class="nav-text">子组件向父组件传递数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%BB%84%E4%BB%B6%E6%8E%A5%E6%94%B6%E6%9D%A5%E8%87%AA%E7%88%B6%E7%BB%84%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE-%E9%80%9A%E8%BF%87%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BF%AE%E6%94%B9%E7%88%B6%E7%BB%84%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A1%88%E4%BE%8B"><span class="nav-number">13.</span> <span class="nav-text">子组件接收来自父组件的数据, 通过子组件修改父组件的数据案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E8%AE%BF%E9%97%AE-%E7%88%B6%E7%BB%84%E4%BB%B6%E8%AE%BF%E9%97%AE%E5%AD%90%E7%BB%84%E4%BB%B6-%E9%80%9A%E8%BF%87-children-%E5%92%8C-refs"><span class="nav-number">14.</span> <span class="nav-text">组件访问-父组件访问子组件, 通过$children 和 $refs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E8%AE%BF%E9%97%AE-%E5%AD%90%E7%BB%84%E4%BB%B6%E8%AE%BF%E9%97%AE%E7%88%B6%E7%BB%84%E4%BB%B6-%E9%80%9A%E8%BF%87-parent-%E5%92%8C-root"><span class="nav-number">15.</span> <span class="nav-text">组件访问-子组件访问父组件, 通过$parent 和 $root</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=461347998&auto=1&height=66"></iframe>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bxd</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/16/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访问数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">本站访问数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

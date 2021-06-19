@@ -135,7 +135,7 @@
 <meta name="description" content="you can enjoy a grander sight，if you climb to a greater height">
 <meta property="og:type" content="website">
 <meta property="og:title" content="coderbxd的破壳">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/page/3/index.html">
 <meta property="og:site_name" content="coderbxd的破壳">
 <meta property="og:description" content="you can enjoy a grander sight，if you climb to a greater height">
 <meta property="og:locale">
@@ -170,7 +170,7 @@
 
 
 
-  <link rel="canonical" href="http://example.com/"/>
+  <link rel="canonical" href="http://example.com/page/3/"/>
 
 
 
@@ -344,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/23-Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%8E%9F%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/09-v-model%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="coderbxd">
@@ -363,7 +363,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/06/19/23-Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%8E%9F%E7%90%86/" itemprop="url">18-Vue响应式原理</a></h1>
+                <a class="post-title-link" href="/2021/06/19/09-v-model%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" itemprop="url">08-v-model的使用</a></h1>
         
 
         <div class="post-meta">
@@ -414,28 +414,12 @@
 
       
         
-          <h3 id="Vue是如何实现响应式的"><a href="#Vue是如何实现响应式的" class="headerlink" title="Vue是如何实现响应式的"></a>Vue是如何实现响应式的</h3><ul>
-<li>Vue实现响应式要了解两个核心<ul>
-<li>第一个: Vue如何监听data数据的改变</li>
-<li>第二个: data数据改变的时候, Vue如何知道应该修改哪一个使用了data数据的元素</li>
-</ul>
-</li>
-</ul>
-<h3 id="Vue如何监听data数据的改变"><a href="#Vue如何监听data数据的改变" class="headerlink" title="Vue如何监听data数据的改变"></a>Vue如何监听data数据的改变</h3><ul>
-<li>实质上vue是通过 defineProperty 方法来监听data数据的改变的</li>
-<li>defineProperty方法需要传入三个参数<ul>
-<li>第一个参数是需要监听的对象(目标对象)</li>
-<li>第二个参数是监听对象的值(引用的目标对象上的字符串键属性)</li>
-<li>第三个参数是一个对象, 对象中编写对应事件</li>
-</ul>
-</li>
-</ul>
-<h3 id="data数据改变的时候-Vue如何知道应该修改哪一个使用了data数据的元素"><a href="#data数据改变的时候-Vue如何知道应该修改哪一个使用了data数据的元素" class="headerlink" title="data数据改变的时候, Vue如何知道应该修改哪一个使用了data数据的元素"></a>data数据改变的时候, Vue如何知道应该修改哪一个使用了data数据的元素</h3><ul>
-<li>vue是通过一种名叫 “发布者订阅者” 的模式来知道当data数据修改的时候, 应该修改哪一个使用了data数据的元素的</li>
-</ul>
+          <h3 id="v-model的基本使用"><a href="#v-model的基本使用" class="headerlink" title="v-model的基本使用"></a>v-model的基本使用</h3><ul>
+<li>在input框中添加指令, v-model, 值为需要绑定的data数据</li>
+<li>这样的话, 修改input框中的内容, data中的内容也会响应式改变<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;message&quot;</span>&gt;</span></span><br><span class="line">    &#123;&#123;message&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line"><span class="javascript">        message: <span class="string">&quot;你好呀&quot;</span></span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2021/06/19/23-Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%8E%9F%E7%90%86/#more" rel="contents">
+            <a class="btn" href="/2021/06/19/09-v-model%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -489,7 +473,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/18-Vue-axios%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9D%97%E5%B0%81%E8%A3%85/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/07-v-for%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="coderbxd">
@@ -508,7 +492,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/06/19/18-Vue-axios%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9D%97%E5%B0%81%E8%A3%85/" itemprop="url">17-axios网络请求</a></h1>
+                <a class="post-title-link" href="/2021/06/19/07-v-for%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86/" itemprop="url">07-v-for的使用</a></h1>
         
 
         <div class="post-meta">
@@ -559,34 +543,12 @@
 
       
         
-          <h3 id="常见的网络请求模块-以及它们的优缺点对比"><a href="#常见的网络请求模块-以及它们的优缺点对比" class="headerlink" title="常见的网络请求模块, 以及它们的优缺点对比"></a>常见的网络请求模块, 以及它们的优缺点对比</h3><ul>
-<li>传统Ajax请求<ul>
-<li>缺点: 配置和调用方式等非常混乱</li>
-<li>真实开发中真的很少直接使用, 而是使用Jquery-Ajax</li>
-</ul>
-</li>
-<li>Jquery-ajax<ul>
-<li>相对于传统的Ajax非常好用</li>
-<li>但是我们在整个vue的开发中都是不需要使用Jquery的</li>
-<li>那么就意味着为了方便我们进行一个网络请求, 特意引用了一个jQuery, 这显然不合理, Vue的代码才一万多行, jQuery的代码就一万多行了</li>
-<li>完全没有必要为了使用网络请求就引用jQuery这个框架</li>
-</ul>
-</li>
-<li>官方在Vue1.x的时候, 推出了Vue-resource<ul>
-<li>Vue-resource的体积相对于jQuery小很多</li>
-<li>而且Vue-resource是Vue官方推出的</li>
-<li>但是在Vue2.0以后, Vue-resource就不再更新了</li>
-<li>这就意味着如果继续使用Vue-resource的话对项目的开发和维护都存在很大的隐患</li>
-</ul>
-</li>
-<li>axios<ul>
-<li>在尤雨溪宣布不再更新vue-resource的时候, 推荐使用axios</li>
-<li>所以就选axios了</li>
-<li>vue作者都让你选这个了, 你还想啥呢?</li>
-<li>可能你会说, 尤雨溪只是个写轮子的, 他懂个P的vue(/滑稽)
+          <h3 id="v-for循环遍历数组"><a href="#v-for循环遍历数组" class="headerlink" title="v-for循环遍历数组"></a>v-for循环遍历数组</h3><ul>
+<li>v-for循环遍历一个数组, 没有使用索引值(下标值) v-for=”item in arr”</li>
+<li>v-for循环遍历一个数组, 使用索引值(下标值) v-for=”(item, index) in arr”<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- v-for循环遍历一个数组, 没有使用索引值(下标值) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;item in names&quot;</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- v-for循环遍历一个数组, 使用索引值(下标值) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;(item,index) in names&quot;</span>&gt;</span>&#123;&#123;index&#125;&#125; &#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line"><span class="javascript">        names: [<span class="string">&quot;xiaoLam&quot;</span>, <span class="string">&quot;kobe&quot;</span>, <span class="string">&quot;jams&quot;</span>, <span class="string">&quot;copo&quot;</span>]</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2021/06/19/18-Vue-axios%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9D%97%E5%B0%81%E8%A3%85/#more" rel="contents">
+            <a class="btn" href="/2021/06/19/07-v-for%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -640,7 +602,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/17-Vue-vuex%E8%AF%A6%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/06-Vue%E4%B8%AD%E5%93%AA%E4%BA%9B%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E6%98%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="coderbxd">
@@ -659,7 +621,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/06/19/17-Vue-vuex%E8%AF%A6%E8%A7%A3/" itemprop="url">16-Vuex状态管理</a></h1>
+                <a class="post-title-link" href="/2021/06/19/06-Vue%E4%B8%AD%E5%93%AA%E4%BA%9B%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E6%98%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84/" itemprop="url">06-数组中的哪些方法是响应式的</a></h1>
         
 
         <div class="post-meta">
@@ -710,25 +672,16 @@
 
       
         
-          <h3 id="什么是vuex"><a href="#什么是vuex" class="headerlink" title="什么是vuex"></a>什么是vuex</h3><ul>
-<li>官方解释: Vuex是一个专门为Vue.js 应用程序开发的状态管理模式<ul>
-<li>采用集中式存储管理应用的所有组件的状态, 并以相应的规则保证状态以一种可以预测的方式发生变化</li>
-<li>Vuex 也继承到Vue官方调试工具 devtools extension, 提供了诸如零配置的 time-travel 调试 状态快照导入导出等高级调试功能</li>
-</ul>
-</li>
-<li>官方解释其实有点晦涩难懂<ul>
-<li>状态管理模式, 集中式存储管理其实</li>
-<li>就是将需要多个组件共享的变量存储在一个对象中</li>
-<li>然后将这个对象放在顶层的Vue实例中,让其他组件也可以使用</li>
-<li>而且这个对象是响应式的, 这个优点是最牛逼的优点</li>
-</ul>
-</li>
-<li>什么状态需要我们在多个组件间共享呢?<ul>
-<li>用户的登陆状态,用户名称,头像,地理位置信息等等</li>
-<li>商品的收藏,购物车中的物品<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们可以尝试一下自己写一下这个共享的对象</span></span><br><span class="line"><span class="comment">// 通过将数据集成在一个共享对象中, 然后将这个对象加入到Vue.prototype 原型对象中, 可以做到将对象中的数据共享出去</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用给Vue.prototype Vue的原型对象添加一个对象来达到所有组件都可以访问这个对象</span></span><br><span class="line"><span class="keyword">const</span> shareObj = &#123;</span><br><span class="line">  name : <span class="string">&quot;xiaoLam&quot;</span>,</span><br><span class="line">  age : <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line">Vue.prototype.shareObj = shareObj;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 但是有一个问题, 这个共享对象不是响应式的, 所以我说vuex的共享数据是响应式的是最牛逼的优点</span></span><br></pre></td></tr></table></figure>
+          
+          数组中的哪些方法是响应式的
+push(), pop(), shift(), unshift(), splice(), sort(), reverse() 这些方法是响应式的
+修改数组中的数据不是响应式的! 
+如果想要修改数组中的数据也有响应式 则需要用splice() 方法
+或者使用Vue的set(
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2021/06/19/17-Vue-vuex%E8%AF%A6%E8%A7%A3/#more" rel="contents">
+            <a class="btn" href="/2021/06/19/06-Vue%E4%B8%AD%E5%93%AA%E4%BA%9B%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E6%98%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -782,7 +735,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/16-Vue-tabbar%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/05-v-if,v-else-if,v-else%E7%9A%84%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="coderbxd">
@@ -801,7 +754,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/06/19/16-Vue-tabbar%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF/" itemprop="url">15-tabBar组件的开发</a></h1>
+                <a class="post-title-link" href="/2021/06/19/05-v-if,v-else-if,v-else%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">05-v-if,v-else-if,v-else的使用</a></h1>
         
 
         <div class="post-meta">
@@ -852,12 +805,13 @@
 
       
         
-          <h3 id="页面下方有一个单独的TabBar组件-如何封装"><a href="#页面下方有一个单独的TabBar组件-如何封装" class="headerlink" title="页面下方有一个单独的TabBar组件, 如何封装"></a>页面下方有一个单独的TabBar组件, 如何封装</h3><ul>
-<li>自定义TabBar组件, 在App组件中使用</li>
-<li>让TabBar处在底部, 并且在 .vue文件中的style标签中设置相关的样式
+          <h3 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h3><ul>
+<li>指令的值可以是一个布尔值, 也可以是一个判断条件</li>
+<li>用于决定一个标签元素是否在页面中渲染</li>
+<li>如果值为真, 则指令的标签会加载在页面中, 为false则不会加载在页面中(不会存在)<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- v-if基本使用, 如果值为true则会加载该标签, 为false则不会加载该标签(这个标签不会存在) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">v-if</span>=<span class="string">&quot;false&quot;</span>&gt;</span>&#123;&#123;meassage&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line"><span class="javascript">        meassage: <span class="string">&quot;你好你好&quot;</span></span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2021/06/19/16-Vue-tabbar%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF/#more" rel="contents">
+            <a class="btn" href="/2021/06/19/05-v-if,v-else-if,v-else%E7%9A%84%E4%BD%BF%E7%94%A8/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -911,7 +865,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/15-Vue%20Router%E8%AF%A6%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/04-computed%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="coderbxd">
@@ -930,7 +884,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/06/19/15-Vue%20Router%E8%AF%A6%E8%A7%A3/" itemprop="url">14-vue-router路由管理</a></h1>
+                <a class="post-title-link" href="/2021/06/19/04-computed%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7/" itemprop="url">04-computed计算属性</a></h1>
         
 
         <div class="post-meta">
@@ -981,33 +935,16 @@
 
       
         
-          <h3 id="什么是路由"><a href="#什么是路由" class="headerlink" title="什么是路由"></a>什么是路由</h3><ul>
-<li>路由是一个网络工程中的一个术语<ul>
-<li>路由(routing) 就是通过互联的网络把信息从源地址传输到目的地址的活动</li>
-</ul>
-</li>
-<li>路由器提供了两种机制: 路由和传送<ul>
-<li>路由是绝对数据包从来源到目的地的路径</li>
-<li>传送将输入端的数据转移到合适的输出段</li>
-</ul>
-</li>
-<li>路由中有一个非常重要的概念叫路由表<ul>
-<li>路由表本质就是一个映射表, 决定了数据包的指向</li>
-</ul>
-</li>
-<li>相关概念<ul>
-<li>内网IP, 每一个链接上网络的设备都有一个内网IP, 这个内网IP是为了区分链接同一个局域网的不同设备, 在同一个局域网中的每个设备的内网IP是唯一的</li>
-<li>公网IP, 公网IP是一个局域网对外链接是用于区分不同局域网的, 每一个局域网的公网IP都是唯一的</li>
-<li>路由中有一个映射表, 将局域网中的内网IP和设备的mac地址对应起来</li>
-</ul>
-</li>
-<li>举个例子<ul>
-<li>现在有一条信息从北京发到广东</li>
-<li>这条信息途中会进过很多路由, 并根据公网IP找到对应的局域网</li>
-<li>再通过路由中的映射表, 找到要传送的设备mac地址对应的内网IP, 再传送给正确的设备
+          <h3 id="计算属性-computed"><a href="#计算属性-computed" class="headerlink" title="计算属性 computed"></a>计算属性 computed</h3><ul>
+<li>什么是计算属性, 在某些情况下, 需要将数据先进行转化后再进行显示, 或者需要将多个数据结合后再进行显示, 那么就需要将属性进行处理, 这就叫做计算属性</li>
+<li>在进行变量的操作的时候 将操作写到computed对象中, return 计算的结果</li>
+<li>定义名字的时候尽量与methods的方法区别开来, methods中定义名字用动词, computed中定义名字用名词<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 定义好后直接mustache语法调用即可 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123;fullName&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line"><span class="javascript">        firstName: <span class="string">&quot;kobe&quot;</span>,</span></span><br><span class="line"><span class="javascript">        lastName: <span class="string">&quot;bulaen&quot;</span></span></span><br><span class="line">      &#125;,</span><br><span class="line"><span class="javascript">      <span class="comment">// 计算属性 computed</span></span></span><br><span class="line">      computed: &#123;</span><br><span class="line"><span class="javascript">        fullName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.lastName;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>computed 和 methods 其实都可以实现功能, 但是为什么要分开呢?</li>
+<li>实际上, 虽然computed 和methods 都可以实现功能, 但是它们两个内部进行的操作是不一样的</li>
+<li>computed 计算属性会进行缓存, 多次调用里面的函数, 只会计算一次, 而methods不会进行缓存, 多次调用的话, 会调用多次
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2021/06/19/15-Vue%20Router%E8%AF%A6%E8%A7%A3/#more" rel="contents">
+            <a class="btn" href="/2021/06/19/04-computed%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1052,7 +989,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="accessibility.prev_page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
   </nav>
 
 

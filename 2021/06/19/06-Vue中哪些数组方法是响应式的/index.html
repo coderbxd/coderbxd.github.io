@@ -119,7 +119,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="VUE," />
 
 
 
@@ -132,14 +132,17 @@
 
 
 
-<meta name="description" content="you can enjoy a grander sight，if you climb to a greater height">
-<meta property="og:type" content="website">
-<meta property="og:title" content="coderbxd的破壳">
-<meta property="og:url" content="http://example.com/archives/2021/04/index.html">
+<meta name="description" content="数组中的哪些方法是响应式的 push(), pop(), shift(), unshift(), splice(), sort(), reverse() 这些方法是响应式的 修改数组中的数据不是响应式的!  如果想要修改数组中的数据也有响应式 则需要用splice() 方法 或者使用Vue的set()方法 set(要修改的数组, 要修改的数据的下标, 修改后的数据)1234567891011121">
+<meta property="og:type" content="article">
+<meta property="og:title" content="06-数组中的哪些方法是响应式的">
+<meta property="og:url" content="http://example.com/2021/06/19/06-Vue%E4%B8%AD%E5%93%AA%E4%BA%9B%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E6%98%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84/index.html">
 <meta property="og:site_name" content="coderbxd的破壳">
-<meta property="og:description" content="you can enjoy a grander sight，if you climb to a greater height">
+<meta property="og:description" content="数组中的哪些方法是响应式的 push(), pop(), shift(), unshift(), splice(), sort(), reverse() 这些方法是响应式的 修改数组中的数据不是响应式的!  如果想要修改数组中的数据也有响应式 则需要用splice() 方法 或者使用Vue的set()方法 set(要修改的数组, 要修改的数据的下标, 修改后的数据)1234567891011121">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-06-19T07:04:16.219Z">
+<meta property="article:modified_time" content="2021-06-19T08:04:00.661Z">
 <meta property="article:author" content="bxd">
+<meta property="article:tag" content="VUE">
 <meta name="twitter:card" content="summary">
 
 
@@ -170,13 +173,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/archives/2021/04/"/>
+  <link rel="canonical" href="http://example.com/2021/06/19/06-Vue中哪些数组方法是响应式的/"/>
 
 
 
 
 
-  <title>归档 | coderbxd的破壳</title>
+  <title>06-数组中的哪些方法是响应式的 | coderbxd的破壳</title>
   
 
 
@@ -195,7 +198,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a target="_blank" rel="noopener" href="https://github.com/coderbxd" class="github-corner" aria-label="View source on GitHub"><svg width="150" height="150" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -329,74 +332,199 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 19 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2021">2021</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/06-Vue%E4%B8%AD%E5%93%AA%E4%BA%9B%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E6%98%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="coderbxd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avator.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coderbxd的破壳">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2021/04/16/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">06-数组中的哪些方法是响应式的</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-04-16T14:46:48+08:00"
-              content="2021-04-16" >
-          04-16
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-19T15:04:16+08:00">
+                2021-06-19
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h3 id="数组中的哪些方法是响应式的"><a href="#数组中的哪些方法是响应式的" class="headerlink" title="数组中的哪些方法是响应式的"></a>数组中的哪些方法是响应式的</h3><ul>
+<li>push(), pop(), shift(), unshift(), splice(), sort(), reverse() 这些方法是响应式的</li>
+<li>修改数组中的数据不是响应式的! </li>
+<li>如果想要修改数组中的数据也有响应式 则需要用splice() 方法</li>
+<li>或者使用Vue的set()方法 set(要修改的数组, 要修改的数据的下标, 修改后的数据)<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;item in arr&quot;</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;btnClick&quot;</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line"><span class="javascript">        arr: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]</span></span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">btnClick</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="comment">// 数组中哪些方法是响应式的</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// 1. push() 在数组的最后添加数据 是响应式的</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// this.arr.push(&#x27;aaa&#x27;);</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">          <span class="comment">// 2. pop() 删除数组的最后一个数据 是响应式的</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// this.arr.pop();</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">          <span class="comment">// 3. shift() 删除数组中的第一个数据 是响应式的</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// this.arr.shift();</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">          <span class="comment">// 4. unshift() 在数组中的最前面添加数据, 是响应式的</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// this.arr.unshift(&quot;aaa&quot;);</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">          <span class="comment">// 5. splice() 删除数组元素, 修改数组元素, 向数组插入元素 是响应式的</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// 这个方法一共有三或以上的参数, 第一个参数是从第几个索引号开始, 第二个参数是要修改多少个数据, 后面的参数是要插入或者要修改的参数</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// 删除数据, 第一个参数传入从第几个索引号开始删除, 第二个参数传入要删除的数据个数, 如果第二个参数不传入的话, 就是删除第一个参数往后的所有数据</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// this.arr.splice(0, 1);</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// 替换数据, 第一个参数传入从第几个索引号开始替换, 第二个参数传入要替换多少个数据, 后面的参数是要替换后的数据</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// this.arr.splice(0, 2, &quot;aaa&quot;, &quot;bbb&quot;);</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// 插入数据, 第一个参数传入从第一个索引号开始插入, 第二个参数传入0, 后面的参数是要插入的数据</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// this.arr.splice(0, 0, &quot;aaa&quot;, &quot;bbb&quot;)</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">          <span class="comment">// 6. sort() 排列数组 参数是一个function 是响应式的</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// this.arr.sort();</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">          <span class="comment">// 7. reverse() 翻转数组, 是响应式的</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// this.arr.reverse();</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">          <span class="comment">// 注意: 修改数组中的数据不是响应式的!!!</span></span></span><br><span class="line"><span class="javascript">           <span class="comment">//this.arr[0] = &quot;aaa&quot;;</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// 想要响应式</span></span></span><br><span class="line"><span class="javascript">          Vue.set(<span class="built_in">this</span>.arr, <span class="number">0</span>, <span class="string">&quot;aaa&quot;</span>);</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
     </div>
+    <div>
+      
+        <div>
+  
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+  
+</div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="coderbxd 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="coderbxd 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/VUE/" rel="tag"><i class="fa fa-tag"></i> VUE</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/06/19/05-v-if,v-else-if,v-else%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="next" title="05-v-if,v-else-if,v-else的使用">
+                <i class="fa fa-chevron-left"></i> 05-v-if,v-else-if,v-else的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/06/19/07-v-for%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86/" rel="prev" title="07-v-for的使用">
+                07-v-for的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -404,6 +532,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -424,8 +556,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -521,6 +662,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%E6%98%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text">数组中的哪些方法是响应式的</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -699,6 +856,10 @@ setInterval("createtime()",250);
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
