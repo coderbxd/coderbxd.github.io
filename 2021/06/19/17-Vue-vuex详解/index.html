@@ -135,12 +135,12 @@
 <meta name="description" content="什么是vuex 官方解释: Vuex是一个专门为Vue.js 应用程序开发的状态管理模式 采用集中式存储管理应用的所有组件的状态, 并以相应的规则保证状态以一种可以预测的方式发生变化 Vuex 也继承到Vue官方调试工具 devtools extension, 提供了诸如零配置的 time-travel 调试 状态快照导入导出等高级调试功能   官方解释其实有点晦涩难懂 状态管理模式, 集中式存储">
 <meta property="og:type" content="article">
 <meta property="og:title" content="16-Vuex状态管理">
-<meta property="og:url" content="http://example.com/2021/06/19/17-Vue-vuex%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:url" content="http://coderbxd.top/2021/06/19/17-Vue-vuex%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="coderbxd的博客">
 <meta property="og:description" content="什么是vuex 官方解释: Vuex是一个专门为Vue.js 应用程序开发的状态管理模式 采用集中式存储管理应用的所有组件的状态, 并以相应的规则保证状态以一种可以预测的方式发生变化 Vuex 也继承到Vue官方调试工具 devtools extension, 提供了诸如零配置的 time-travel 调试 状态快照导入导出等高级调试功能   官方解释其实有点晦涩难懂 状态管理模式, 集中式存储">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-06-19T07:04:16.264Z">
-<meta property="article:modified_time" content="2021-06-19T08:04:59.856Z">
+<meta property="article:modified_time" content="2021-07-02T06:24:05.895Z">
 <meta property="article:author" content="bxd">
 <meta property="article:tag" content="VUE">
 <meta name="twitter:card" content="summary">
@@ -173,7 +173,7 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2021/06/19/17-Vue-vuex详解/"/>
+  <link rel="canonical" href="http://coderbxd.top/2021/06/19/17-Vue-vuex详解/"/>
 
 
 
@@ -264,16 +264,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -295,7 +285,7 @@
       
         
         <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
+          <a href="/baidusitemap.xml" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
@@ -346,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/17-Vue-vuex%E8%AF%A6%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="http://coderbxd.top/2021/06/19/17-Vue-vuex%E8%AF%A6%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="coderbxd">
@@ -433,11 +423,11 @@
 </li>
 <li>什么状态需要我们在多个组件间共享呢?<ul>
 <li>用户的登陆状态,用户名称,头像,地理位置信息等等</li>
-<li>商品的收藏,购物车中的物品<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们可以尝试一下自己写一下这个共享的对象</span></span><br><span class="line"><span class="comment">// 通过将数据集成在一个共享对象中, 然后将这个对象加入到Vue.prototype 原型对象中, 可以做到将对象中的数据共享出去</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用给Vue.prototype Vue的原型对象添加一个对象来达到所有组件都可以访问这个对象</span></span><br><span class="line"><span class="keyword">const</span> shareObj = &#123;</span><br><span class="line">  name : <span class="string">&quot;xiaoLam&quot;</span>,</span><br><span class="line">  age : <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line">Vue.prototype.shareObj = shareObj;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 但是有一个问题, 这个共享对象不是响应式的, 所以我说vuex的共享数据是响应式的是最牛逼的优点</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h3 id="vuex基本使用"><a href="#vuex基本使用" class="headerlink" title="vuex基本使用"></a>vuex基本使用</h3></li>
+<li>商品的收藏,购物车中的物品<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们可以尝试一下自己写一下这个共享的对象</span></span><br><span class="line"><span class="comment">// 通过将数据集成在一个共享对象中, 然后将这个对象加入到Vue.prototype 原型对象中, 可以做到将对象中的数据共享出去</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用给Vue.prototype Vue的原型对象添加一个对象来达到所有组件都可以访问这个对象</span></span><br><span class="line"><span class="keyword">const</span> shareObj = &#123;</span><br><span class="line">  name : <span class="string">&quot;xiaoLam&quot;</span>,</span><br><span class="line">  age : <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line">Vue.prototype.shareObj = shareObj;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 但是有一个问题, 这个共享对象不是响应式的, 所以我说vuex的共享数据是响应式的是最牛逼的优点</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
+</ul>
+<h3 id="vuex基本使用"><a href="#vuex基本使用" class="headerlink" title="vuex基本使用"></a>vuex基本使用</h3><ul>
 <li>vuex的安装<ul>
 <li>在项目根目录下命令行输入 npm install vuex –save (运行时依赖安装)</li>
 </ul>
@@ -859,7 +849,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -872,7 +862,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

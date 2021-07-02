@@ -119,7 +119,7 @@
 
 
 
-  <meta name="keywords" content="VUE," />
+  <meta name="keywords" content="VUE,面试高频," />
 
 
 
@@ -135,14 +135,15 @@
 <meta name="description" content="Vue是如何实现响应式的 Vue实现响应式要了解两个核心 第一个: Vue如何监听data数据的改变 第二个: data数据改变的时候, Vue如何知道应该修改哪一个使用了data数据的元素    Vue如何监听data数据的改变 实质上vue是通过 defineProperty 方法来监听data数据的改变的 defineProperty方法需要传入三个参数 第一个参数是需要监听的对象(目标对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="18-Vue响应式原理">
-<meta property="og:url" content="http://example.com/2021/06/19/23-Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:url" content="http://coderbxd.top/2021/06/19/23-Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="coderbxd的博客">
 <meta property="og:description" content="Vue是如何实现响应式的 Vue实现响应式要了解两个核心 第一个: Vue如何监听data数据的改变 第二个: data数据改变的时候, Vue如何知道应该修改哪一个使用了data数据的元素    Vue如何监听data数据的改变 实质上vue是通过 defineProperty 方法来监听data数据的改变的 defineProperty方法需要传入三个参数 第一个参数是需要监听的对象(目标对象">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-06-19T07:04:16.276Z">
-<meta property="article:modified_time" content="2021-06-19T08:03:51.728Z">
+<meta property="article:modified_time" content="2021-07-02T06:15:58.369Z">
 <meta property="article:author" content="bxd">
 <meta property="article:tag" content="VUE">
+<meta property="article:tag" content="面试高频">
 <meta name="twitter:card" content="summary">
 
 
@@ -173,7 +174,7 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2021/06/19/23-Vue响应式的原理/"/>
+  <link rel="canonical" href="http://coderbxd.top/2021/06/19/23-Vue响应式的原理/"/>
 
 
 
@@ -264,16 +265,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -295,7 +286,7 @@
       
         
         <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
+          <a href="/baidusitemap.xml" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
@@ -346,7 +337,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/23-Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%8E%9F%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="http://coderbxd.top/2021/06/19/23-Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="coderbxd">
@@ -437,7 +428,6 @@
 <h3 id="data数据改变的时候-Vue如何知道应该修改哪一个使用了data数据的元素"><a href="#data数据改变的时候-Vue如何知道应该修改哪一个使用了data数据的元素" class="headerlink" title="data数据改变的时候, Vue如何知道应该修改哪一个使用了data数据的元素"></a>data数据改变的时候, Vue如何知道应该修改哪一个使用了data数据的元素</h3><ul>
 <li>vue是通过一种名叫 “发布者订阅者” 的模式来知道当data数据修改的时候, 应该修改哪一个使用了data数据的元素的</li>
 </ul>
-<span id="more"></span>
 <h3 id="代码简单模拟vue的响应式原理"><a href="#代码简单模拟vue的响应式原理" class="headerlink" title="代码简单模拟vue的响应式原理"></a>代码简单模拟vue的响应式原理</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里是简单地模拟一下vue的响应式原理</span></span><br><span class="line"><span class="comment">// vue实现响应式核心为两个</span></span><br><span class="line"><span class="comment">// 第一个: vue如何监听data数据的更改</span></span><br><span class="line"><span class="comment">// 第二个: vue如何知道应该修改页面中的哪个元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 先来解决第一个问题</span></span><br><span class="line"><span class="comment">// 实质上vue是通过defineProperty方法来监听数据的更改的</span></span><br><span class="line"><span class="comment">// 比如这里的obj对象就是vue中的data对象</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  name: <span class="string">&quot;xiaolam&quot;</span>,</span><br><span class="line">  age: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// vue中会获得这个obj对象, 然后遍历里面的键</span></span><br><span class="line"><span class="comment">// 通过 Object.keys(obj) 来获取obj中的键并组成一个数组</span></span><br><span class="line"><span class="comment">// 然后通过forEach 遍历这个数组, 给数组中的键通过defineProperty方法监听里面的所有key</span></span><br><span class="line"><span class="built_in">Object</span>.keys(obj).forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> value = obj[key];</span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">    <span class="comment">// 通过defineProperty中的set方法就可以监听obj对象中数据的更改了</span></span><br><span class="line">    <span class="function"><span class="title">set</span>(<span class="params">newValue</span>)</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;进入defineProperty中的set&quot;</span>);</span><br><span class="line">      <span class="comment">// 在更改obj中的数据的时候, 调用发布者中的notify方法, 这个方法会调用所有订阅者中的update方法</span></span><br><span class="line">      <span class="comment">// 而update方法里面可以编写更新页面的代码</span></span><br><span class="line">      dep.notify()</span><br><span class="line">      value = newValue</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 通过defineProperty中的get方法就可以监听页面中什么元素的通过mustache语法取用obj数据</span></span><br><span class="line">    <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;进入defineProperty中的get&quot;</span>);</span><br><span class="line">      <span class="comment">// 在使用obj的数据后, 将使用数据的元素做一个记录</span></span><br><span class="line">      <span class="comment">// 存储在发布者中</span></span><br><span class="line">      <span class="keyword">const</span> w1 = <span class="keyword">new</span> Watcher(<span class="string">&quot;w1&quot;</span>)</span><br><span class="line">      dep.addSub(w1)</span><br><span class="line">      <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 通过上面的过程就可以实现第一个问题: vue如何实现监听data数据的更改</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 现在解决第二个问题: vue如何知道应该修改页面中的哪个元素</span></span><br><span class="line"><span class="comment">// 实质上vue使用的是一个 发布者订阅者 的技术</span></span><br><span class="line"><span class="comment">// 发布者就是指vue实例</span></span><br><span class="line"><span class="comment">// 而订阅者就是指使用mustache语法的元素</span></span><br><span class="line"><span class="comment">// 发布者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dep</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 这个数组用于存储订阅者</span></span><br><span class="line">    <span class="built_in">this</span>.subs = []</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 在元素取用data数据的时候调用Dep中的这个方法, 来将元素(订阅者)加入到subs数组中用于记录订阅者都有谁</span></span><br><span class="line">  <span class="function"><span class="title">addSub</span>(<span class="params">watcher</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.subs.push(watcher)</span><br><span class="line">  &#125;; </span><br><span class="line">  <span class="function"><span class="title">notify</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.subs.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">      item.update()</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 订阅者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Watcher</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="function"><span class="title">update</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 在这里做更新页面的操作</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;更新&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> dep = <span class="keyword">new</span> Dep()</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -500,6 +490,8 @@
           
             <a href="/tags/VUE/" rel="tag"><i class="fa fa-tag"></i> VUE</a>
           
+            <a href="/tags/%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91/" rel="tag"><i class="fa fa-tag"></i> 面试高频</a>
+          
         </div>
       
 
@@ -520,6 +512,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/07/02/%E6%B5%8F%E8%A7%88%E5%99%A801-cookie%E3%80%81sessionStorage%E3%80%81localStorage%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="cookie、sessionStorage、localStorage的区别">
+                cookie、sessionStorage、localStorage的区别 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -600,7 +596,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -613,7 +609,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

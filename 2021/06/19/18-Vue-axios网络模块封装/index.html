@@ -135,12 +135,12 @@
 <meta name="description" content="常见的网络请求模块, 以及它们的优缺点对比 传统Ajax请求 缺点: 配置和调用方式等非常混乱 真实开发中真的很少直接使用, 而是使用Jquery-Ajax   Jquery-ajax 相对于传统的Ajax非常好用 但是我们在整个vue的开发中都是不需要使用Jquery的 那么就意味着为了方便我们进行一个网络请求, 特意引用了一个jQuery, 这显然不合理, Vue的代码才一万多行, jQuer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="17-axios网络请求">
-<meta property="og:url" content="http://example.com/2021/06/19/18-Vue-axios%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9D%97%E5%B0%81%E8%A3%85/index.html">
+<meta property="og:url" content="http://coderbxd.top/2021/06/19/18-Vue-axios%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9D%97%E5%B0%81%E8%A3%85/index.html">
 <meta property="og:site_name" content="coderbxd的博客">
 <meta property="og:description" content="常见的网络请求模块, 以及它们的优缺点对比 传统Ajax请求 缺点: 配置和调用方式等非常混乱 真实开发中真的很少直接使用, 而是使用Jquery-Ajax   Jquery-ajax 相对于传统的Ajax非常好用 但是我们在整个vue的开发中都是不需要使用Jquery的 那么就意味着为了方便我们进行一个网络请求, 特意引用了一个jQuery, 这显然不合理, Vue的代码才一万多行, jQuer">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-06-19T07:04:16.269Z">
-<meta property="article:modified_time" content="2021-06-19T08:03:52.968Z">
+<meta property="article:modified_time" content="2021-07-02T06:24:04.513Z">
 <meta property="article:author" content="bxd">
 <meta property="article:tag" content="VUE">
 <meta name="twitter:card" content="summary">
@@ -173,7 +173,7 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2021/06/19/18-Vue-axios网络模块封装/"/>
+  <link rel="canonical" href="http://coderbxd.top/2021/06/19/18-Vue-axios网络模块封装/"/>
 
 
 
@@ -264,16 +264,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -295,7 +285,7 @@
       
         
         <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
+          <a href="/baidusitemap.xml" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
@@ -346,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/18-Vue-axios%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9D%97%E5%B0%81%E8%A3%85/">
+    <link itemprop="mainEntityOfPage" href="http://coderbxd.top/2021/06/19/18-Vue-axios%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9D%97%E5%B0%81%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="coderbxd">
@@ -442,10 +432,11 @@
 <li>在尤雨溪宣布不再更新vue-resource的时候, 推荐使用axios</li>
 <li>所以就选axios了</li>
 <li>vue作者都让你选这个了, 你还想啥呢?</li>
-<li>可能你会说, 尤雨溪只是个写轮子的, 他懂个P的vue(/滑稽)<span id="more"></span>
-<h3 id="axios的基本使用"><a href="#axios的基本使用" class="headerlink" title="axios的基本使用"></a>axios的基本使用</h3></li>
+<li>可能你会说, 尤雨溪只是个写轮子的, 他懂个P的vue(/滑稽)</li>
 </ul>
 </li>
+</ul>
+<h3 id="axios的基本使用"><a href="#axios的基本使用" class="headerlink" title="axios的基本使用"></a>axios的基本使用</h3><ul>
 <li>安装axios 在项目根目录下, 命令行输入<ul>
 <li>npm install axios –save (运行时依赖)</li>
 </ul>
@@ -745,7 +736,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -758,7 +749,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

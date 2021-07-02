@@ -135,12 +135,12 @@
 <meta name="description" content="v-if 指令的值可以是一个布尔值, 也可以是一个判断条件 用于决定一个标签元素是否在页面中渲染 如果值为真, 则指令的标签会加载在页面中, 为false则不会加载在页面中(不会存在)123456789101112&lt;div id&#x3D;&quot;app&quot;&gt;    &lt;!-- v-if基本使用, 如果值为true则会加载该标签, 为false则不会加载该标签(这个标签不会存在)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="05-v-if,v-else-if,v-else的使用">
-<meta property="og:url" content="http://example.com/2021/06/19/05-v-if,v-else-if,v-else%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:url" content="http://coderbxd.top/2021/06/19/05-v-if,v-else-if,v-else%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="coderbxd的博客">
 <meta property="og:description" content="v-if 指令的值可以是一个布尔值, 也可以是一个判断条件 用于决定一个标签元素是否在页面中渲染 如果值为真, 则指令的标签会加载在页面中, 为false则不会加载在页面中(不会存在)123456789101112&lt;div id&#x3D;&quot;app&quot;&gt;    &lt;!-- v-if基本使用, 如果值为true则会加载该标签, 为false则不会加载该标签(这个标签不会存在)">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-06-19T07:04:16.215Z">
-<meta property="article:modified_time" content="2021-06-19T08:04:01.379Z">
+<meta property="article:modified_time" content="2021-07-02T06:24:21.774Z">
 <meta property="article:author" content="bxd">
 <meta property="article:tag" content="VUE">
 <meta name="twitter:card" content="summary">
@@ -173,7 +173,7 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2021/06/19/05-v-if,v-else-if,v-else的使用/"/>
+  <link rel="canonical" href="http://coderbxd.top/2021/06/19/05-v-if,v-else-if,v-else的使用/"/>
 
 
 
@@ -264,16 +264,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -295,7 +285,7 @@
       
         
         <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
+          <a href="/baidusitemap.xml" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
@@ -346,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/05-v-if,v-else-if,v-else%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://coderbxd.top/2021/06/19/05-v-if,v-else-if,v-else%E7%9A%84%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="coderbxd">
@@ -421,9 +411,9 @@
         <h3 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h3><ul>
 <li>指令的值可以是一个布尔值, 也可以是一个判断条件</li>
 <li>用于决定一个标签元素是否在页面中渲染</li>
-<li>如果值为真, 则指令的标签会加载在页面中, 为false则不会加载在页面中(不会存在)<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- v-if基本使用, 如果值为true则会加载该标签, 为false则不会加载该标签(这个标签不会存在) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">v-if</span>=<span class="string">&quot;false&quot;</span>&gt;</span>&#123;&#123;meassage&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line"><span class="javascript">        meassage: <span class="string">&quot;你好你好&quot;</span></span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h3 id="v-if-和-v-else"><a href="#v-if-和-v-else" class="headerlink" title="v-if 和 v-else"></a>v-if 和 v-else</h3></li>
+<li>如果值为真, 则指令的标签会加载在页面中, 为false则不会加载在页面中(不会存在)<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- v-if基本使用, 如果值为true则会加载该标签, 为false则不会加载该标签(这个标签不会存在) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">v-if</span>=<span class="string">&quot;false&quot;</span>&gt;</span>&#123;&#123;meassage&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line"><span class="javascript">        meassage: <span class="string">&quot;你好你好&quot;</span></span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="v-if-和-v-else"><a href="#v-if-和-v-else" class="headerlink" title="v-if 和 v-else"></a>v-if 和 v-else</h3><ul>
 <li>如果v-if的值为真则会加载 v-if的标签, 否则会加载v-else 的标签<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">v-if</span>=<span class="string">&quot;isShow&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>你好<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>你好<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>你好<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>你好<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else</span>&gt;</span>v-if为假的时候,显示的div<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line"><span class="javascript">        isShow: <span class="literal">true</span></span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="v-if-和-v-else-if-和-v-else"><a href="#v-if-和-v-else-if-和-v-else" class="headerlink" title="v-if 和 v-else-if 和 v-else"></a>v-if 和 v-else-if 和 v-else</h3><ul>
@@ -595,7 +585,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -608,7 +598,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
