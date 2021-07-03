@@ -6,7 +6,7 @@
   <link href="http://coderbxd.top/atom.xml" rel="self"/>
   
   <link href="http://coderbxd.top/"/>
-  <updated>2021-07-03T09:01:07.125Z</updated>
+  <updated>2021-07-03T09:23:03.601Z</updated>
   <id>http://coderbxd.top/</id>
   
   <author>
@@ -17,15 +17,29 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>px,em,rem的区别</title>
     <link href="http://coderbxd.top/2021/07/03/css06-px,em,rem%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
     <id>http://coderbxd.top/2021/07/03/css06-px,em,rem%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
     <published>2021-07-03T09:01:07.125Z</published>
-    <updated>2021-07-03T09:01:07.125Z</updated>
+    <updated>2021-07-03T09:23:03.601Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="px-em-rem的区别"><a href="#px-em-rem的区别" class="headerlink" title="px,em,rem的区别"></a>px,em,rem的区别</h3><ul><li><p>px </p><ul><li>px 像素 绝对单位。像素 px 是相对于显示器屏幕分辨率而言的，是一<br>个虚拟长度单位，是计算机系统的数字化图像长度单位</li></ul></li><li><p>em </p><ul><li>em是相对长度单位，相对于当前对象内文本的字体尺寸。如当前对行内文本的字<br>体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。它会继承父级元素的字体大<br>小，因此并不是一个固定的值</li></ul></li><li><p>rem </p><ul><li>rem是CSS3 新增的一个相对单位（root em，根 em），使用 rem 为元素设定字<br>体大小时，仍然是相对大小，但相对的只是 HTML 根元素</li></ul></li><li><p>区别<br>IE 无法调整那些使用 px 作为单位的字体大小，而 em 和 rem 可以缩放，rem<br>相对的只是 HTML 根元素。这个单位可谓集相对大小和绝对大小的优点于一身，通<br>过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐<br>层复合的连锁反应。目前，除了 IE8 及更早版本外，所有浏览器均已支持rem</p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;px-em-rem的区别&quot;&gt;&lt;a href=&quot;#px-em-rem的区别&quot; class=&quot;headerlink&quot; title=&quot;px,em,rem的区别&quot;&gt;&lt;/a&gt;px,em,rem的区别&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;px &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;px 像</summary>
+      
     
     
     
     
+    <category term="面试高频" scheme="http://coderbxd.top/tags/%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91/"/>
+    
+    <category term="CSS" scheme="http://coderbxd.top/tags/CSS/"/>
     
   </entry>
   
