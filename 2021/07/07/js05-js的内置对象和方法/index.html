@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="coderbxd的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="对象及方法Arguments 函数参数集合Arguments[ ] 函数参数的数组Arguments 一个函数的参数和其他属性Arguments.callee 当前正在运行的函数Arguments.length 传递给函数的参数的个数 Array数组ength 属性 动态获取数组长度join() 将一个数组转成字符串。返回一个字符串。reverse() 将数组中各元素颠倒顺序delete 运算符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内置对象和方法">
+<meta property="og:url" content="http://coderbxd.top/2021/07/07/js05-js%E7%9A%84%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="coderbxd的博客">
+<meta property="og:description" content="对象及方法Arguments 函数参数集合Arguments[ ] 函数参数的数组Arguments 一个函数的参数和其他属性Arguments.callee 当前正在运行的函数Arguments.length 传递给函数的参数的个数 Array数组ength 属性 动态获取数组长度join() 将一个数组转成字符串。返回一个字符串。reverse() 将数组中各元素颠倒顺序delete 运算符">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-07-07T07:49:59.533Z">
+<meta property="article:modified_time" content="2021-07-07T08:12:35.014Z">
+<meta property="article:author" content="bxd">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://coderbxd.top/2021/07/07/js05-js的内置对象和方法/"/>
+
+
+
+
+
+  <title>内置对象和方法 | coderbxd的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/coderbxd" class="github-corner" aria-label="View source on GitHub"><svg width="150" height="150" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">coderbxd的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">重庆移通学院 2022 软件工程</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/baidusitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-js,面试高频" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://coderbxd.top/2021/07/07/js05-js%E7%9A%84%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="coderbxd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avator.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coderbxd的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">内置对象和方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-07T15:49:59+08:00">
+                2021-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="对象及方法"><a href="#对象及方法" class="headerlink" title="对象及方法"></a>对象及方法</h3><p>Arguments 函数参数集合<br>Arguments[ ] 函数参数的数组<br>Arguments 一个函数的参数和其他属性<br>Arguments.callee 当前正在运行的函数<br>Arguments.length 传递给函数的参数的个数</p>
+<h3 id="Array数组"><a href="#Array数组" class="headerlink" title="Array数组"></a>Array数组</h3><p>ength 属性 动态获取数组长度<br>join() 将一个数组转成字符串。返回一个字符串。<br>reverse() 将数组中各元素颠倒顺序<br>delete 运算符 只能删除数组元素的值，而所占空间还在，总长度没变(arr.length)。<br>shift() 删除数组中第一个元素，返回删除的那个值，并将长度减 1。<br>pop() 删除数组中最后一个元素，返回删除的那个值，并将长度减 1。<br>unshift() 往数组前面添加一个或多个数组元素，长度要改变。arrObj.unshift(“a” ，“b，“c”)<br>push() 往数组结尾添加一个或多个数组元素，长度要改变。arrObj.push(“a” ，“b”，“c”)<br>concat() 连接数组<br>slice() 返回数组的一部分<br>sort() 对数组元素进行排序<br>splice() 插入、删除或替换数组的元素<br>toLocaleString() 把数组转换成局部字符串<br>toString() 将数组转换成一个字符串<br>forEach() 遍历所有元素<br>every() 判断所有元素是否都符合条件<br>map() 对元素进行重新组装，生成新的元素</p>
+<h3 id="string-字符串对象"><a href="#string-字符串对象" class="headerlink" title="string 字符串对象"></a>string 字符串对象</h3><p>Length 获取字符串的长度。如：var len = strObj.length<br>toLowerCase() 将字符串中的字母转成全小写。如：strObj.toLowerCase()<br>toUpperCase() 将字符串中的字母转成全大写。如：strObj.toUpperCase()<br>charAt(index) 返回指定下标位置的一个字符。如果没有找到，则返回空字符串<br>substr() 在原始字符串，返回一个子字符串<br>substring() 在原始字符串，返回一个子字符串<br>  区别：’’’<br>    “abcdefgh”.substring(2，3) = “c”<br>    “abcdefgh”.substr(2，3) = “cde”<br>split() 将一个字符串转成数组<br>charCodeAt( ) 返回字符串中的第 n 个字符的代码<br>concat( ) 连接字符串<br>fromCharCode( ) 从字符编码创建—个字符串<br>indexOf( ) 返回一个子字符串在原始字符串中的索引值(查找顺序从左往右查找)。如果没<br>有找到，则返回-1<br>lastIndexOf( ) 从后向前检索一个字符串<br>localeCompare( ) 用本地特定的顺序来比较两个字符串<br>match( ) 找到一个或多个正则表达式的匹配<br>replace( ) 替换一个与正则表达式匹配的子串<br>search( ) 检索与正则表达式相匹配的子串<br>slice( ) 抽取一个子串<br>toLocaleLowerCase( ) 把字符串转换小写<br>toLocaleUpperCase( ) 将字符串转换成大写<br>toLowerCase( ) 将字符串转换成小写<br>toString( ) 返回字符串<br>toUpperCase( ) 将字符串转换成大写<br>valueOf( )</p>
+<h3 id="Boolean-布尔对象方法"><a href="#Boolean-布尔对象方法" class="headerlink" title="Boolean 布尔对象方法"></a>Boolean 布尔对象方法</h3><p>Boolean.toString( ) 将布尔值转换成字符串<br>Boolean.valueOf( ) Boolean 对象的布尔值</p>
+<h3 id="Date-日期时间"><a href="#Date-日期时间" class="headerlink" title="Date 日期时间"></a>Date 日期时间</h3><ul>
+<li>创建 Date 对象的方法</li>
+</ul>
+<ul>
+<li>创建当前(现在)日期对象的实例，不带任何参数<br>var today = new Date()；</li>
+<li>创建指定时间戳的日期对象实例，参数是时间戳。<br>时间戳：是指某一个时间距离 1970 年 1 月 1 日 0 时 0 分 0 秒，过去了多少毫秒值(1<br>秒=1000 毫秒)<br>var timer = new Date(10000)； //时间是 1970 年 1 月 1 日 0 时 0 分 10 秒</li>
+<li>指定一个字符串的日期时间信息，参数是一个日期时间字符串<br>var timer = new Date(“2015/5/25 10：00：00”)；</li>
+<li>指定多个数值参数<br>var timer = new Date(2015+100，4，25，10，20，0)； //顺序为：年、月、日、<br>时、分、秒，年、月、日是必须的</li>
+</ul>
+<ul>
+<li>方法：<br>Date.getDate( ) 返回一个月中的某一天<br>Date.getDay( ) 返回一周中的某一天<br>Date.getFullYear( ) 返回 Date 对象的年份字段<br>Date.getHours( ) 返回 Date 对象的小时字段<br>Date.getMilliseconds( ) 返回 Date 对象的毫秒字段<br>Date.getMinutes( ) 返回 Date 对象的分钟字段<br>Date.getMonth( ) 返回 Date 对象的月份字段<br>Date.getSeconds( ) 返回 Date 对象的秒字段<br>Date.getTime( ) 返回 Date 对象的毫秒表示</li>
+</ul>
+<h3 id="Error-异常对象"><a href="#Error-异常对象" class="headerlink" title="Error 异常对象"></a>Error 异常对象</h3><p>Error.message 可以读取的错误消息<br>Error.name 错误的类型<br>Error.toString( ) 把 Error 对象转换成字符串<br>EvalError 在不正确使用 eval()时抛出<br>SyntaxError 抛出该错误用来通知语法错误<br>RangeError 在数字超出合法范围时抛出<br>ReferenceError 在读取不存在的变量时抛出<br>TypeError 当一个值的类型错误时，抛出该异常<br>URIError 由 URl 的编码和解码方法抛出</p>
+<h3 id="Function-函数构造器"><a href="#Function-函数构造器" class="headerlink" title="Function 函数构造器"></a>Function 函数构造器</h3><p>Function.apply( ) 将函数作为一个对象的方法调用<br>Function.arguments[] 传递给函数的参数<br>Function.call( ) 将函数作为对象的方法调用<br>Function.caller 调用当前函数的函数<br>Function.length 已声明的参数的个数<br>Function.prototype 对象类的原型<br>Function.toString( ) 把函数转换成字符串</p>
+<h3 id="Math-数据对象"><a href="#Math-数据对象" class="headerlink" title="Math 数据对象"></a>Math 数据对象</h3><p>Math 对象是一个静态对象<br>Math.PI 圆周率<br>Math.abs() 绝对值<br>Math.ceil() 向上取整(整数加 1，小数去掉)<br>Math.floor() 向下取整(直接去掉小数)<br>Math.round() 四舍五入<br>Math.pow(x，y) 求 x 的 y 次方<br>Math.sqrt() 求平方根</p>
+<h3 id="number-数值对象"><a href="#number-数值对象" class="headerlink" title="number 数值对象"></a>number 数值对象</h3><p>Number.MAX_VALUE 最大数值<br>Number.MIN_VALUE 最小数值<br>Number.NaN 特殊的非数字值<br>Number.NEGATIVE_INFINITY 负无穷大<br>Number.POSITIVE_INFINITY 正无穷大<br>Number.toExponential( ) 用指数计数法格式化数字<br>Number.toFixed( ) 采用定点计数法格式化数字<br>Number.toLocaleString( ) 把数字转换成本地格式的字符串<br>Number.toPrecision( ) 格式化数字的有效位<br>Number.toString( ) 将—个数字转换成字符串<br>Number.valueOf( ) 返回原始数</p>
+<h3 id="object-基础对象"><a href="#object-基础对象" class="headerlink" title="object 基础对象"></a>object 基础对象</h3><p>Object 含有所有 JavaScript 对象的特性的超类<br>Object.constructor 对象的构造函数<br>Object.hasOwnProperty( ) 检查属性是否被继承<br>Object.isPrototypeOf( ) 一个对象是否是另一个对象的原型<br>Object.propertyIsEnumerable( ) 是否可以通过 for/in 循环看到属性<br>Object.toLocaleString( ) 返回对象的本地字符串表示<br>Object.toString( ) 定义一个对象的字符串表示<br>Object.valueOf( ) 指定对象的原始值</p>
+<h3 id="正则表达式对象"><a href="#正则表达式对象" class="headerlink" title="正则表达式对象"></a>正则表达式对象</h3><p>RegExp.exec( ) 通用的匹配模式<br>RegExp.global 正则表达式是否全局匹配<br>RegExp.ignoreCase 正则表达式是否区分大小写<br>RegExp.lastIndex 下次匹配的起始位置<br>RegExp.source 正则表达式的文本<br>RegExp.test( ) 检测一个字符串是否匹配某个模式<br>RegExp.toString( ) 把正则表达式转换成字符串</p>
+
+      
+    </div>
+    <div>
+      
+        <div>
+  
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+  
+</div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，沉迷于学习无法自拔！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="coderbxd 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="coderbxd 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/07/07/js04%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" rel="next" title="创建函数的几种方式">
+                <i class="fa fa-chevron-left"></i> 创建函数的几种方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/07/07/js06-===%E5%92%8C==%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="=== 和 == 的区别">
+                === 和 == 的区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avator.jpg"
+                alt="coderbxd" />
+            
+              <p class="site-author-name" itemprop="name">coderbxd</p>
+              <p class="site-description motion-element" itemprop="description">技术改变世界，一入前端深似海</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/coderbxd" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/bxd520" target="_blank" title="Gitee">
+                      
+                        <i class="fa fa-fw fa-git-square"></i>Gitee</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1134052715@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qq_45224140?spm=1000.2115.3001.5343" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%8F%8A%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">对象及方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array%E6%95%B0%E7%BB%84"><span class="nav-number">2.</span> <span class="nav-text">Array数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#string-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.</span> <span class="nav-text">string 字符串对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean-%E5%B8%83%E5%B0%94%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">Boolean 布尔对象方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Date-%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4"><span class="nav-number">5.</span> <span class="nav-text">Date 日期时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-%E5%BC%82%E5%B8%B8%E5%AF%B9%E8%B1%A1"><span class="nav-number">6.</span> <span class="nav-text">Error 异常对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-%E5%87%BD%E6%95%B0%E6%9E%84%E9%80%A0%E5%99%A8"><span class="nav-number">7.</span> <span class="nav-text">Function 函数构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Math-%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1"><span class="nav-number">8.</span> <span class="nav-text">Math 数据对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#number-%E6%95%B0%E5%80%BC%E5%AF%B9%E8%B1%A1"><span class="nav-number">9.</span> <span class="nav-text">number 数值对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#object-%E5%9F%BA%E7%A1%80%E5%AF%B9%E8%B1%A1"><span class="nav-number">10.</span> <span class="nav-text">object 基础对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AF%B9%E8%B1%A1"><span class="nav-number">11.</span> <span class="nav-text">正则表达式对象</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=461347998&auto=1&height=66"></iframe>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bxd</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/16/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访问数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">本站访问数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
