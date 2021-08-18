@@ -6,7 +6,7 @@
   <link href="http://coderbxd.top/atom.xml" rel="self"/>
   
   <link href="http://coderbxd.top/"/>
-  <updated>2021-08-18T07:23:06.616Z</updated>
+  <updated>2021-08-18T08:39:47.437Z</updated>
   <id>http://coderbxd.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://coderbxd.top/2021/08/18/%E9%9D%A2%E7%BB%8F01-%E5%AE%9E%E4%B9%A0%E5%83%A7/"/>
     <id>http://coderbxd.top/2021/08/18/%E9%9D%A2%E7%BB%8F01-%E5%AE%9E%E4%B9%A0%E5%83%A7/</id>
     <published>2021-08-18T06:34:42.857Z</published>
-    <updated>2021-08-18T07:23:06.616Z</updated>
+    <updated>2021-08-18T08:39:47.437Z</updated>
     
     <content type="html"><![CDATA[<h3 id="只有一面"><a href="#只有一面" class="headerlink" title="只有一面"></a>只有一面</h3><ul><li>自我介绍</li><li>介绍了一下公司技术栈<ul><li>jquery+vue+其他的框架</li></ul></li><li>css水平垂直居中<ul><li>相对绝对定位（transform、margin）</li><li>flex布局</li></ul></li><li>重绘和重排</li><li>cookie和sessionstroge和localstroge的区别<ul><li>答了安全性，存储大小，有效期，存储位置（session和sessionstroge不是一个东西，让我记错了）</li><li>cookie：可设置失效时间，没有设置的话，默认是关闭浏览器后失效<br>localStorage：除非被手动清除，否则将会永久保存。<br>sessionStorage： 仅在当前网页会话下有效，关闭页面或浏览器后就会被清除。</li><li>cookie：4KB左右<br>localStorage和sessionStorage：可以保存5MB的信息</li><li>都保存在客户端</li></ul></li><li>http状态码<ul><li>问了3XX（重定向）,没答出来</li><li>问了4XX和5XX（404找不到资源前端问题，500服务器问题后端问题）</li></ul></li><li>vue生命周期<ul><li>问了有多少个，8个</li></ul></li><li>vue加载dom在哪个生命周期中发生<ul><li>mounted</li></ul></li><li>vue父子组件通信<ul><li>props和$emit</li><li>中央事件总线</li><li>vuex</li></ul></li><li>vuex用的多吗</li><li>v-if和v-show的区别（答的不是很好）<ul><li>v-if在条件切换时，会对标签进行适当的创建和销毁，而v-show则仅在初始化时加载一次，因此v-if的开销相对来说会比v-show大。</li><li>v-if是惰性的，只有当条件为真时才会真正渲染标签；如果初始条件不为真，则v-if不会去渲染标签。v-show则无论初始条件是否成立，都会渲染标签，它仅仅做的只是简单的CSS切换。</li></ul></li><li>v-for中的id是做什么的<ul><li>没答出来</li></ul></li><li>vue路由有几种<ul><li>3种，说了下hash、history</li></ul></li><li>是否了解git</li><li>原生js做轮播图的思路<ul><li>简单说了一下，写的话应该就不会写了</li></ul></li></ul>]]></content>
     
@@ -37,6 +37,8 @@
     
     
     
+    
+    <category term="面经" scheme="http://coderbxd.top/tags/%E9%9D%A2%E7%BB%8F/"/>
     
   </entry>
   
