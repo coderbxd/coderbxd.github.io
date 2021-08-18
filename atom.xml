@@ -6,7 +6,7 @@
   <link href="http://coderbxd.top/atom.xml" rel="self"/>
   
   <link href="http://coderbxd.top/"/>
-  <updated>2021-07-07T08:15:22.787Z</updated>
+  <updated>2021-08-18T07:23:06.616Z</updated>
   <id>http://coderbxd.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端实习-萌想科技(实习僧)</title>
+    <link href="http://coderbxd.top/2021/08/18/%E9%9D%A2%E7%BB%8F01-%E5%AE%9E%E4%B9%A0%E5%83%A7/"/>
+    <id>http://coderbxd.top/2021/08/18/%E9%9D%A2%E7%BB%8F01-%E5%AE%9E%E4%B9%A0%E5%83%A7/</id>
+    <published>2021-08-18T06:34:42.857Z</published>
+    <updated>2021-08-18T07:23:06.616Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="只有一面"><a href="#只有一面" class="headerlink" title="只有一面"></a>只有一面</h3><ul><li>自我介绍</li><li>介绍了一下公司技术栈<ul><li>jquery+vue+其他的框架</li></ul></li><li>css水平垂直居中<ul><li>相对绝对定位（transform、margin）</li><li>flex布局</li></ul></li><li>重绘和重排</li><li>cookie和sessionstroge和localstroge的区别<ul><li>答了安全性，存储大小，有效期，存储位置（session和sessionstroge不是一个东西，让我记错了）</li><li>cookie：可设置失效时间，没有设置的话，默认是关闭浏览器后失效<br>localStorage：除非被手动清除，否则将会永久保存。<br>sessionStorage： 仅在当前网页会话下有效，关闭页面或浏览器后就会被清除。</li><li>cookie：4KB左右<br>localStorage和sessionStorage：可以保存5MB的信息</li><li>都保存在客户端</li></ul></li><li>http状态码<ul><li>问了3XX（重定向）,没答出来</li><li>问了4XX和5XX（404找不到资源前端问题，500服务器问题后端问题）</li></ul></li><li>vue生命周期<ul><li>问了有多少个，8个</li></ul></li><li>vue加载dom在哪个生命周期中发生<ul><li>mounted</li></ul></li><li>vue父子组件通信<ul><li>props和$emit</li><li>中央事件总线</li><li>vuex</li></ul></li><li>vuex用的多吗</li><li>v-if和v-show的区别（答的不是很好）<ul><li>v-if在条件切换时，会对标签进行适当的创建和销毁，而v-show则仅在初始化时加载一次，因此v-if的开销相对来说会比v-show大。</li><li>v-if是惰性的，只有当条件为真时才会真正渲染标签；如果初始条件不为真，则v-if不会去渲染标签。v-show则无论初始条件是否成立，都会渲染标签，它仅仅做的只是简单的CSS切换。</li></ul></li><li>v-for中的id是做什么的<ul><li>没答出来</li></ul></li><li>vue路由有几种<ul><li>3种，说了下hash、history</li></ul></li><li>是否了解git</li><li>原生js做轮播图的思路<ul><li>简单说了一下，写的话应该就不会写了</li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;只有一面&quot;&gt;&lt;a href=&quot;#只有一面&quot; class=&quot;headerlink&quot; title=&quot;只有一面&quot;&gt;&lt;/a&gt;只有一面&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;自我介绍&lt;/li&gt;
+&lt;li&gt;介绍了一下公司技术栈&lt;ul&gt;
+&lt;li&gt;jquery+vue+其他的框架&lt;/li&gt;
+&lt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>=== 和 == 的区别</title>
@@ -464,31 +488,6 @@
     <category term="面试高频" scheme="http://coderbxd.top/tags/%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91/"/>
     
     <category term="HTML" scheme="http://coderbxd.top/tags/HTML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>http2.0新特性</title>
-    <link href="http://coderbxd.top/2021/07/02/%E6%B5%8F%E8%A7%88%E5%99%A805-http2.0%E6%96%B0%E7%89%B9%E6%80%A7/"/>
-    <id>http://coderbxd.top/2021/07/02/%E6%B5%8F%E8%A7%88%E5%99%A805-http2.0%E6%96%B0%E7%89%B9%E6%80%A7/</id>
-    <published>2021-07-02T07:05:16.096Z</published>
-    <updated>2021-07-02T07:06:45.060Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="http2-0的特性如下"><a href="#http2-0的特性如下" class="headerlink" title="http2.0的特性如下"></a>http2.0的特性如下</h3><ul><li><p>内容安全，应为http2.0是基于https的，天然具有安全特性，通过http2.0的特性可以避免单纯使用https的性能下降</p></li><li><p>二进制格式，http1.X的解析是基于文本的，http2.0将所有的传输信息分割为更小的消息和帧，并对他们采用二进制格式编码，基于二进制可以让协议有更多的扩展性，比如引入了帧来传输数据和指令</p></li><li><p>多路复用，这个功能相当于是长连接的增强，每个request请求可以随机的混杂在一起，接收方可以根据request的id将request再归属到各自不同的服务端请求里面，另外多路复用中也支持了流的优先级，允许客户端告诉服务器那些内容是更优先级的资源，可以优先传输，</p></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;http2-0的特性如下&quot;&gt;&lt;a href=&quot;#http2-0的特性如下&quot; class=&quot;headerlink&quot; title=&quot;http2.0的特性如下&quot;&gt;&lt;/a&gt;http2.0的特性如下&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;内容安全，应为http2.0是基于http</summary>
-      
-    
-    
-    
-    
-    <category term="浏览器" scheme="http://coderbxd.top/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
-    
-    <category term="面试高频" scheme="http://coderbxd.top/tags/%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91/"/>
     
   </entry>
   
